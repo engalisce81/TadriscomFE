@@ -1,6 +1,6 @@
 import { Environment } from '@abp/ng.core';
 
-const baseUrl = 'https://progres-fe-production-418f.up.railway.app';
+const baseUrl = 'https://tadriscomfe.sliplane.app';
 
 export const environment = {
   production: true,
