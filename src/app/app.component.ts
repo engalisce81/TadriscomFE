@@ -33,7 +33,6 @@ export class AppComponent implements OnInit {
       this.router.navigate(['/accountc']);
     } else{
 
-      this.router.navigate(['/']);
 
       this.replaceableComponents.add({
         component:LogoutComponent,

@@ -47,14 +47,7 @@ function configureRoutes(routesService: RoutesService) {
       layout: eLayoutType.application,
       requiredPolicy: 'Acadmy.Courses',
     },
-    {
-      path: 'chapters',
-      name: 'Chapters',
-      iconClass: 'fas fa-file-alt',
-      order: 6,
-      layout: eLayoutType.application,
-      requiredPolicy: 'Acadmy.Chapters',
-    },
+    
     {
       path: 'lectures',
       name: 'Lectures',

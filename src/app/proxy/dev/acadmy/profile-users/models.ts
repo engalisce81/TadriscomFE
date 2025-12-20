@@ -23,4 +23,5 @@ export interface UserInfoDto {
   accountTypeName?: string;
   lectureCount: number;
   chapterCount: number;
+  isStudentUniversite: boolean;
 }

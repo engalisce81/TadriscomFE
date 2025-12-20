@@ -1,7 +1,8 @@
-import type { CourseLookupDto, CourseStudentDto, CreateUpdateCourseStudentDto, CreateUpdateStudentCoursesDto, StudentDegreeByCourseDto } from './models';
+import type { CourseStudentDto, CreateUpdateCourseStudentDto, CreateUpdateStudentCoursesDto, StudentDegreeByCourseDto } from './models';
 import { RestService, Rest } from '@abp/ng.core';
 import type { PagedResultDto } from '@abp/ng.core';
 import { Injectable } from '@angular/core';
+import type { CourseLookupDto } from '../entities/courses/entities/models';
 import type { ResponseApi } from '../response/models';
 
 @Injectable({

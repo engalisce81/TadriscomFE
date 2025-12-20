@@ -1,0 +1,130 @@
+/* المتغيرات والأساسيات */
+.list-container {
+    padding: 24px;
+    background: var(--bg-body);
+    min-height: 100vh;
+}
+
+/* التولبار */
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    gap: 15px;
+
+    .search-wrapper {
+        position: relative;
+        flex: 1;
+        max-width: 400px;
+        .search-icon { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--purple-600); }
+        .search-input-modern {
+            width: 100%; padding: 12px 12px 12px 45px; border-radius: 12px;
+            border: 1px solid var(--surface-variant); background: var(--surface);
+            color: var(--text); transition: 0.3s;
+            &:focus { border-color: var(--purple-600); outline: none; }
+        }
+    }
+
+    .btn-create-modern {
+        background: var(--bg-btn); color: white; border: none; padding: 10px 24px;
+        border-radius: 12px; font-weight: 600; cursor: pointer; transition: 0.3s;
+        &:hover { transform: translateY(-2px); filter: brightness(1.1); }
+    }
+}
+
+/* طبقة المودال (منع لمس الخلفية) */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 20px;
+}
+
+/* كارت المودال */
+.modal-content-card {
+    background: var(--bg-user);
+    border: 1px solid var(--purple-600);
+    border-radius: 24px;
+    padding: 30px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    animation: zoomIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    .form-header {
+        display: flex; justify-content: space-between; align-items: center;
+        margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid var(--surface-variant);
+        h3 { color: var(--purple-600); margin: 0; font-size: 1.3rem; }
+        .btn-close-form { background: transparent; border: none; color: var(--text); font-size: 1.2rem; cursor: pointer; &:hover { color: #ef4444; } }
+    }
+}
+
+/* تنسيق الفورم الرأسي */
+.modern-vertical-form {
+    display: flex; flex-direction: column; gap: 20px;
+    .form-group {
+        display: flex; flex-direction: column; gap: 8px;
+        label { color: var(--muted); font-size: 0.85rem; font-weight: 600; }
+        .form-control {
+            width: 100%; padding: 12px; border-radius: 10px; background: var(--surface);
+            border: 1px solid var(--surface-variant); color: var(--text);
+            &:focus { border-color: var(--purple-600); outline: none; }
+        }
+    }
+    .form-row-dual { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .checkbox-align { .switch-label { display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text); input { width: 18px; height: 18px; accent-color: var(--purple-600); } } }
+    
+    .form-actions {
+        display: flex; gap: 12px; margin-top: 10px;
+        button { flex: 1; padding: 12px; border-radius: 10px; font-weight: bold; cursor: pointer; border: none; transition: 0.2s; }
+        .btn-cancel { background: var(--surface-variant); color: var(--text); &:hover { background: rgba(255,255,255,0.1); } }
+        .btn-confirm { background: var(--purple-600); color: white; &:disabled { opacity: 0.5; cursor: not-allowed; } }
+    }
+}
+
+/* كروت الشبكة */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+.exam-card {
+    background: var(--bg-user); border: 1px solid var(--surface-variant);
+    border-radius: 20px; padding: 20px; transition: 0.3s;
+    &:hover { border-color: var(--purple-600); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+    
+    .card-status {
+        font-size: 0.75rem; display: flex; align-items: center; gap: 6px; margin-bottom: 12px;
+        &.active { color: #10b981; .dot { background: #10b981; box-shadow: 0 0 8px #10b981; } }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: #ef4444; }
+    }
+    .exam-title { color: var(--text); margin-bottom: 15px; font-size: 1.1rem; }
+    .exam-info { display: flex; gap: 15px; color: var(--muted); font-size: 0.9rem; i { color: var(--purple-600); } }
+    
+    .card-actions {
+        display: flex; justify-content: flex-end; gap: 8px; margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--surface-variant);
+        .act-btn {
+            width: 36px; height: 36px; border-radius: 8px; border: none; background: var(--surface); color: var(--text); cursor: pointer; transition: 0.2s;
+            &:hover { background: var(--purple-600); color: white; }
+            &.delete:hover { background: #ef4444; }
+        }
+    }
+}
+
+/* مودال الحذف */
+.delete-modal {
+    background: var(--bg-user); padding: 35px; border-radius: 24px; max-width: 400px; text-align: center; border: 1px solid var(--surface-variant);
+    .warning-ring { font-size: 2.5rem; color: #f59e0b; margin-bottom: 15px; }
+    .modal-btns { display: flex; gap: 12px; margin-top: 25px; button { flex: 1; padding: 12px; border-radius: 10px; cursor: pointer; border: none; } }
+    .btn-no { background: var(--surface-variant); color: var(--text); }
+    .btn-yes { background: #ef4444; color: white; }
+}
+
+/* تحميل وانميشن */
+.loading-overlay { display: flex; justify-content: center; padding: 50px; .spinner-modern { width: 40px; height: 40px; border: 3px solid rgba(139,92,246,0.1); border-top-color: var(--purple-600); border-radius: 50%; animation: spin 1s linear infinite; } }
+.empty-state { text-align: center; padding: 60px; color: var(--muted); i { font-size: 3rem; margin-bottom: 10px; display: block; } }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes zoomIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }

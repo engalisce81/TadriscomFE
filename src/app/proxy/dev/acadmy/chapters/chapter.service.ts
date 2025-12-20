@@ -54,11 +54,11 @@ export class ChapterService {
     { apiName: this.apiName,...config });
   
 
-  getList = (pageNumber: number, pageSize: number, search: string, config?: Partial<Rest.Config>) =>
+  getList = (pageNumber: number, pageSize: number, search: string, courseId: string, config?: Partial<Rest.Config>) =>
     this.restService.request<any, PagedResultDto<ChapterDto>>({
       method: 'GET',
       url: '/api/app/chapter',
-      params: { pageNumber, pageSize, search },
+      params: { pageNumber, pageSize, search, courseId },
     },
     { apiName: this.apiName,...config });
   

@@ -6,6 +6,10 @@ import { UpdateCourseComponent } from './update-course/update-course.component';
 import { ListSubscriberComponent } from './list-subscriber/list-subscriber.component';
 import { ListRequestjoinComponent } from './list-requestjoin/list-requestjoin.component';
 import { DegreeStudentComponent } from './degree-student/degree-student.component';
+import { ListFeedbackComponent } from './list-feedback/list-feedback.component';
+import { ListChapterComponent } from './chapter/list-chapter/list-chapter.component';
+import { ListLectureComponent } from './chapter/lecture/list-lecture/list-lecture.component';
+import { ListExamComponent } from './exam/list-exam/list-exam.component';
 
 const routes: Routes = [
   {path:'',pathMatch:'full',component:ListCourseComponent},
@@ -14,6 +18,14 @@ const routes: Routes = [
   {path: 'subscriber/:id',pathMatch:'full' ,  component: ListSubscriberComponent},
   { path: 'subscriber/:id/degree/:userId' ,pathMatch:'full', component: DegreeStudentComponent },
    {path:'requestjoin/:id',pathMatch:'full',component:ListRequestjoinComponent},
+   {path:':id/feedbacks',pathMatch:'full',component:ListFeedbackComponent},
+   {path:':id/chapters',pathMatch:'full',component:ListChapterComponent},
+   {path:':id/chapters/:chapterId/lectures',pathMatch:'full',component:ListLectureComponent},
+   {path:':id/exams',pathMatch:'full',component:ListExamComponent},
+
+
+
+
 
 
 

@@ -4,7 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AccountcustomService } from '@proxy/dev/acadmy/account-customs';
 import { CourseStudentService } from '@proxy/dev/acadmy/courses';
-import { CourseLookupDto, CreateUpdateStudentCoursesDto } from '@proxy/dev/acadmy/courses/models';
+import {  CreateUpdateStudentCoursesDto } from '@proxy/dev/acadmy/courses/models';
+import { CourseLookupDto } from '@proxy/dev/acadmy/entities/courses/entities/models';
 import { StudentDto, StudentService } from '@proxy/dev/acadmy/students';
 
 

@@ -33,7 +33,7 @@ export class ListLectureComponent {
 
   loadLectures(): void {
     this.loading = true;
-    this.lectureService.getList(this.pageIndex, this.pageSize, this.search).subscribe({
+    this.lectureService.getList(this.pageIndex, this.pageSize, this.search,"").subscribe({
       next: (res) => {
         this.lectures = res.items;
         this.totalCount = res.totalCount;

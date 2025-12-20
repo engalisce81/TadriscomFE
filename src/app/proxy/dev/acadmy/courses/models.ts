@@ -1,5 +1,6 @@
 import type { AuditedEntityDto, EntityDto } from '@abp/ng.core';
 import type { CourseChaptersDto } from '../chapters/models';
+import type { FeedbackDto } from '../dtos/response/courses/models';
 
 export interface CourseDto extends AuditedEntityDto<string> {
   name?: string;
@@ -57,12 +58,7 @@ export interface CourseInfoHomeDto {
   durationInWeeks?: number;
   infos: string[];
   courseChaptersDtos: CourseChaptersDto[];
-}
-
-export interface CourseLookupDto {
-  courseId?: string;
-  name?: string;
-  isSelect: boolean;
+  feedbacks: FeedbackDto[];
 }
 
 export interface CourseStudentDto extends EntityDto<string> {

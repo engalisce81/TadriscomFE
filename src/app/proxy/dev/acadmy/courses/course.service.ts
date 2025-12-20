@@ -55,11 +55,11 @@ export class CourseService {
     { apiName: this.apiName,...config });
   
 
-  getCoursesInfoList = (pageNumber: number, pageSize: number, search: string, alreadyJoin: boolean, collegeId: string, subjectId: string, gradelevelId: string, config?: Partial<Rest.Config>) =>
+  getCoursesInfoList = (pageNumber: number, pageSize: number, search: string, alreadyJoin: boolean, collegeId: string, subjectId: string, gradelevelId: string, termId: string, config?: Partial<Rest.Config>) =>
     this.restService.request<any, PagedResultDto<CourseInfoHomeDto>>({
       method: 'GET',
       url: '/api/app/course/courses-info-list',
-      params: { pageNumber, pageSize, search, alreadyJoin, collegeId, subjectId, gradelevelId },
+      params: { pageNumber, pageSize, search, alreadyJoin, collegeId, subjectId, gradelevelId, termId },
     },
     { apiName: this.apiName,...config });
   
