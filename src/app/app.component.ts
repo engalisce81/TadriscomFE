@@ -22,33 +22,16 @@ export class AppComponent implements OnInit {
     private replaceableComponents: ReplaceableComponentsService
   ) { }
   ngOnInit() {
-
-
     if (!this.authService.getAccessToken()) {
       this.replaceableComponents.add({
         component: EmptyLayoutComponent,
         key: eThemeLeptonXComponents.ApplicationLayout,
       });
-
-      this.router.navigate(['/accountc']);
     } else{
-
-
       this.replaceableComponents.add({
         component:LogoutComponent,
         key: eThemeLeptonXComponents.NavItems,
       });
- 
-     /* this.replaceableComponents.add({
-        component:LogoutComponent,
-        key: eThemeLeptonXComponents.MobileNavbar
-      });*/
-
-      
-     /* this.replaceableComponents.add({
-        component:LogoutComponent,
-        key: eThemeLeptonXComponents.MobileLanguageSelection
-      });*/
     }
   }
 }

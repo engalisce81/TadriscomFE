@@ -1,7 +1,7 @@
 import { NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { RegistercustomDto, AccountcustomService } from '@proxy/dev/acadmy/account-customs';
 import { LookupDto } from '@proxy/dev/acadmy/look-up';
 import { UniversityService, CollegeService } from '@proxy/dev/acadmy/universites';
@@ -9,7 +9,7 @@ import { UniversityService, CollegeService } from '@proxy/dev/acadmy/universites
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule ,FormsModule ,NgClass],
+  imports: [ReactiveFormsModule ,FormsModule ,NgClass ,RouterLink],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
