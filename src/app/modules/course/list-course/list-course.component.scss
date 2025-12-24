@@ -191,7 +191,7 @@
 /* Actions Menu */
 .dropdown-actions {
   position: absolute;
-  top: 15px;
+  top: 5px;
   right: 15px;
 
   .dots-btn {
@@ -208,8 +208,8 @@
 
 .actions-menu {
   position: absolute;
-  top: 40px;
-  right: 0;
+  top: 0px;
+  right: 50px;
   background: var(--dialog);
   border: 1px solid var(--surface-variant);
   border-radius: 12px;

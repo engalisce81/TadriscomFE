@@ -176,4 +176,61 @@
       p { color: var(--text); font-weight: 600; margin: 0; }
     }
   }
+}.profile-actions-top {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--surface-variant);
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+
+  i { font-size: 1.2rem; }
+
+  &:hover {
+    transform: translateY(-2px);
+    background: var(--surface-variant);
+  }
+}
+
+.logout-btn {
+  border-color: rgba(239, 68, 68, 0.3);
+  &:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border-color: #ef4444;
+  }
+}
+
+.mode-toggle {
+  i { color: var(--warning); }
+}
+
+/* التحويل للـ Light Mode باستخدام المتغيرات اللي بعتها أول مرة */
+:host-context(.light-mode) {
+  --bg: #F8FAFC;
+  --surface: #FFFFFF;
+  --card: #F1F5F9;
+  --text: #1E293B;
+  --muted: #64748B;
+  --surface-variant: #E2E8F0;
+  
+  .profile-card-modern {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  }
 }

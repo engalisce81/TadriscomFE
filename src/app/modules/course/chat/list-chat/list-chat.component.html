@@ -1,0 +1,56 @@
+<div class="chat-wrapper">
+  <header class="chat-header">
+    <div class="user-info">
+      <div class="avatar">
+        <img *ngIf="messages.length > 0 && messages[0].logoUrl" [src]="messages[0].logoUrl" class="user-img">
+        <div *ngIf="!messages.length || !messages[0].logoUrl" class="avatar-placeholder">
+          {{ receiverId.substring(0, 2).toUpperCase() }}
+        </div>
+      </div>
+      <div class="details">
+        <h3>المحادثة</h3>
+        <span class="status">متصل الآن</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="messages-container" #scrollContainer>
+    <div *ngIf="loading" class="loader-spinner">جاري تحميل الرسائل...</div>
+
+    <div *ngFor="let msg of messages" 
+         [ngClass]="{
+           'msg-me': msg.senderId === currentUserId, 
+           'msg-them': msg.senderId !== currentUserId
+         }" 
+         class="message-wrapper">
+      
+      <img *ngIf="msg.senderId !== currentUserId" 
+           [src]="msg.logoUrl || 'assets/images/default-avatar.png'" 
+           class="msg-avatar">
+      
+      <div class="message-bubble">
+        <span class="sender-name" *ngIf="msg.senderId !== currentUserId">
+          {{ msg.senderName || 'الطرف الآخر' }}
+          <span *ngIf="msg.isInstructor" class="badge">Instructor</span>
+        </span>
+        
+        <p>{{ msg.message }}</p>
+        
+        <div class="meta">
+          <span class="time">{{ msg.creationTime | date:'shortTime' }}</span>
+          <i class="fa fa-check-double read-icon" *ngIf="msg.senderId === currentUserId"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="chat-footer">
+    <div class="input-area">
+      <input type="text" [(ngModel)]="newMessage" (keyup.enter)="send()" placeholder="اكتب رسالتك هنا...">
+      <button class="send-btn" (click)="send()" [disabled]="!newMessage.trim() || sending">
+        <i class="fa fa-paper-plane" *ngIf="!sending"></i>
+        <i class="fa fa-spinner fa-spin" *ngIf="sending"></i>
+      </button>
+    </div>
+  </footer>
+</div>

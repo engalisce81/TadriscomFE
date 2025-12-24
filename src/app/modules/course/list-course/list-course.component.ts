@@ -1,4 +1,5 @@
 import { ConfigStateService } from '@abp/ng.core';
+import { NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -9,7 +10,7 @@ import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 @Component({
   selector: 'app-list-course',
   standalone: true,
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule ,NgIf ],
   templateUrl: './list-course.component.html',
   styleUrl: './list-course.component.scss'
 })
@@ -78,7 +79,10 @@ export class ListCourseComponent implements OnInit {
   }
 
   hasRole(role: string): boolean { return this.roles.includes(role); }
-
+  // داخل الكلاس
+get isAdmin(): boolean {
+  return this.roles.includes('admin');
+}
   confirmDelete(course: CourseDto): void { this.courseToDelete = course; this.showDeleteConfirm = true; }
   cancelDelete(): void { this.showDeleteConfirm = false; }
   

@@ -21,6 +21,11 @@ const routes: Routes = [
     canActivate:[AuthRedirectGuard],
     loadChildren: () => import('./modules/course/course.module').then(m => m.CourseModule),
   },
+  {
+    path: 'advertisement',
+    canActivate:[AuthRedirectGuard],
+    loadChildren: () => import('./modules/advertisement/advertisement.module').then(m => m.AdvertisementModule),
+  },
  
   {
     path: 'account',

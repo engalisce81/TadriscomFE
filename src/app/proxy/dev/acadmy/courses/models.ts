@@ -57,6 +57,7 @@ export interface CourseInfoHomeDto {
   collegeName?: string;
   subjectId?: string;
   showSubscriberCount: boolean;
+  subscriberCount: number;
   subjectName?: string;
   gradelevelId?: string;
   gradelevelName?: string;

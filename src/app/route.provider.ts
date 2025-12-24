@@ -65,7 +65,14 @@ function configureRoutes(routesService: RoutesService) {
       requiredPolicy: 'Acadmy.CourseStudents.Edit'
 
     },
-    
+    {
+      path: 'advertisement',
+      name: 'Ads',
+      iconClass: 'fas fa-user-circle',
+      order: 12,
+      layout: eLayoutType.application,
+      requiredPolicy: 'Acadmy.QuestionBanks',
+    },
      {
       path: 'profile',
       name: 'Profile',

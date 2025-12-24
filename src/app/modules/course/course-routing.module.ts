@@ -11,11 +11,14 @@ import { ListChapterComponent } from './chapter/list-chapter/list-chapter.compon
 import { ListLectureComponent } from './chapter/lecture/list-lecture/list-lecture.component';
 import { ListExamComponent } from './exam/list-exam/list-exam.component';
 import { ListQuizComponent } from './chapter/lecture/quiz/list-quiz/list-quiz.component';
+import { ListChatComponent } from './chat/list-chat/list-chat.component';
 
 const routes: Routes = [
   {path:'',pathMatch:'full',component:ListCourseComponent},
   {path:'create',pathMatch:'full',component:CreateCourseComponent},
   {path:'update/:id',pathMatch:'full',component:UpdateCourseComponent},
+  {path:':id/chat',pathMatch:'full',component:ListChatComponent},
+
   {path: 'subscriber/:id',pathMatch:'full' ,  component: ListSubscriberComponent},
   { path: 'subscriber/:id/degree/:userId' ,pathMatch:'full', component: DegreeStudentComponent },
    {path:'requestjoin/:id',pathMatch:'full',component:ListRequestjoinComponent},

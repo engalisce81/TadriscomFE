@@ -11,6 +11,14 @@ export class ChatService {
   apiName = 'Default';
   
 
+  deleteMessage = (id: string, config?: Partial<Rest.Config>) =>
+    this.restService.request<any, void>({
+      method: 'DELETE',
+      url: `/api/app/chat/${id}/message`,
+    },
+    { apiName: this.apiName,...config });
+  
+
   getMessages = (receverId: string, pageNumber: number = 1, pageSize: number = 10, search?: string, config?: Partial<Rest.Config>) =>
     this.restService.request<any, PagedResultDto<ChatMessageDto>>({
       method: 'GET',
@@ -21,9 +29,18 @@ export class ChatService {
   
 
   sendMessage = (input: CreateUpdateChatMessageDto, config?: Partial<Rest.Config>) =>
-    this.restService.request<any, void>({
+    this.restService.request<any, ChatMessageDto>({
       method: 'POST',
       url: '/api/app/chat/send-message',
+      body: input,
+    },
+    { apiName: this.apiName,...config });
+  
+
+  updateMessage = (id: string, input: CreateUpdateChatMessageDto, config?: Partial<Rest.Config>) =>
+    this.restService.request<any, ChatMessageDto>({
+      method: 'PUT',
+      url: `/api/app/chat/${id}/message`,
       body: input,
     },
     { apiName: this.apiName,...config });

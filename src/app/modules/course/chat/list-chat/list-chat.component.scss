@@ -1,0 +1,295 @@
+.chat-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--bg-body);
+  color: var(--text);
+}
+
+.chat-header {
+  padding: 1rem 1.5rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--surface-variant);
+  box-shadow: var(--shadow-1);
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    
+    .avatar img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 2px solid var(--purple-600);
+    }
+
+    h3 { margin: 0; font-size: 1.1rem; }
+    .status { font-size: 0.8rem; color: var(--success); }
+  }
+}
+
+.messages-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  /* Custom Scrollbar */
+  &::-webkit-scrollbar { width: 6px; }
+  &::-webkit-scrollbar-thumb { background: var(--surface-variant); border-radius: 10px; }
+}
+
+.message-wrapper {
+  display: flex;
+  width: 100%;
+  
+  &.msg-me {
+    justify-content: flex-end;
+    .message-bubble {
+      background: var(--bg-btn); /* البنفسجي للرسايل المرسلة */
+      border-radius: 18px 18px 2px 18px;
+    }
+  }
+
+  &.msg-them {
+    justify-content: flex-start;
+    .message-bubble {
+      background: var(--surface-variant); /* الرمادي للرسايل المستلمة */
+      border-radius: 18px 18px 18px 2px;
+    }
+  }
+}
+
+.message-bubble {
+  max-width: 70%;
+  padding: 10px 15px;
+  box-shadow: var(--shadow-1);
+  position: relative;
+
+  p { margin: 0; line-height: 1.5; }
+  .time {
+    display: block;
+    font-size: 0.7rem;
+    margin-top: 5px;
+    opacity: 0.7;
+    text-align: right;
+  }
+}
+
+.chat-footer {
+  padding: 15px;
+  background: var(--surface);
+  
+  .input-group {
+    display: flex;
+    gap: 10px;
+    background: var(--card);
+    padding: 8px 15px;
+    border-radius: 25px;
+    border: 1px solid var(--surface-variant);
+
+    input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      outline: none;
+      
+      &::placeholder { color: var(--muted); }
+    }
+
+    button {
+      background: var(--bg-btn);
+      border: none;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.2s;
+
+      &:disabled { opacity: 0.5; }
+      &:hover:not(:disabled) { transform: scale(1.05); }
+    }
+  }
+}.chat-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 90vh; /* أو 100vh حسب الحاجه */
+  background: var(--bg-body);
+  color: var(--text);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-2);
+}
+
+.chat-header {
+  padding: 15px 20px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--surface-variant);
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .avatar-placeholder {
+      width: 45px;
+      height: 45px;
+      background: var(--bg-btn);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    h3 { margin: 0; font-size: 1rem; color: var(--text); }
+    .status { font-size: 0.75rem; color: var(--success); }
+  }
+}
+
+.messages-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-image: radial-gradient(var(--surface-variant) 1px, transparent 0); /* شكل بسيط للخلفية */
+  background-size: 20px 20px;
+
+  &::-webkit-scrollbar { width: 5px; }
+  &::-webkit-scrollbar-thumb { background: var(--surface-variant); border-radius: 10px; }
+}
+
+.message-wrapper {
+  display: flex;
+  width: 100%;
+  margin-bottom: 4px;
+
+  &.msg-me {
+    justify-content: flex-end;
+    .message-bubble {
+      background: var(--bg-btn);
+      color: white;
+      border-radius: 15px 15px 2px 15px;
+      box-shadow: var(--shadow-1);
+    }
+  }
+
+  &.msg-them {
+    justify-content: flex-start;
+    .message-bubble {
+      background: var(--surface-variant);
+      color: var(--text);
+      border-radius: 15px 15px 15px 2px;
+    }
+  }
+}
+
+.message-bubble {
+  max-width: 75%;
+  padding: 10px 14px;
+  position: relative;
+
+  .sender-name {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--sky-300);
+    margin-bottom: 4px;
+    font-weight: bold;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.95rem;
+    word-wrap: break-word;
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    margin-top: 4px;
+    opacity: 0.8;
+
+    .time { font-size: 0.65rem; }
+    .read-icon { font-size: 0.7rem; color: var(--sky-300); }
+  }
+}
+
+.chat-footer {
+  padding: 15px;
+  background: var(--surface);
+
+  .input-area {
+    display: flex;
+    background: var(--card);
+    border-radius: 25px;
+    padding: 5px 15px;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--surface-variant);
+
+    input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      padding: 10px 0;
+      outline: none;
+      &::placeholder { color: var(--muted); }
+    }
+
+    .send-btn {
+      background: var(--bg-btn);
+      border: none;
+      color: white;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s ease;
+
+      &:hover:not(:disabled) { transform: scale(1.1); }
+      &:disabled { opacity: 0.5; cursor: not-allowed; }
+    }
+  }
+}
+
+.loader-spinner {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-top: 10px;
+}
+
+/* صورة المستخدم في الهيدر */
+.user-img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--purple-600);
+}
+
+/* صورة المستخدم بجانب الرسالة */
+.msg-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  align-self: flex-end; /* الصورة تكون تحت جنب آخر سطر في الرسالة */
+  margin-right: 8px;
+  margin-bottom: 4px;
+  border: 1px solid var(--surface-variant);
+}
+
+

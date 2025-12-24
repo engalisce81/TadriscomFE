@@ -15,22 +15,16 @@
         
         <div class="avatar-wrapper">
           <div class="image-container" [class.uploading]="uploading">
-            <img 
-              [src]="profile.profilePictureUrl || 'https://picsum.photos/200/200'" 
-              class="avatar-img"
-              alt="Profile Picture"
-            />
+            <img [src]="profile.profilePictureUrl || 'https://picsum.photos/200/200'" class="avatar-img" />
             @if (uploading) {
-              <div class="upload-overlay">
-                <span class="loader-inner"></span>
-              </div>
+              <div class="upload-overlay"><span class="loader-inner"></span></div>
             }
           </div>
-
           <label class="edit-avatar-btn">
             <i class="bi bi-camera-fill"></i>
             <input type="file" accept="image/*" hidden (change)="onImageSelected($event)">
-          </label>        </div>
+          </label>
+        </div>
 
         <div class="user-main-info">
           <h2 class="username">{{ profile.name }}</h2>
@@ -54,48 +48,39 @@
       </div>
 
       <div class="details-section">
-        <h3 class="section-title">Academic Information</h3>
+        <h3 class="section-title">Academic & Settings</h3>
         
         <div class="info-grid">
-          @if (profile.universityName) {
-            <div class="detail-item">
-              <div class="icon-box"><i class="bi bi-building"></i></div>
-              <div class="text-group">
-                <label>University</label>
-                <p>{{ profile.universityName }}</p>
-              </div>
-            </div>
-                    }          
+          <div class="detail-item" *ngIf="profile.universityName">
+            <div class="icon-box"><i class="bi bi-building"></i></div>
+            <div class="text-group"><label>University</label><p>{{ profile.universityName }}</p></div>
+          </div>
 
-          @if (profile.collegeName) {
-            <div class="detail-item">
-              <div class="icon-box"><i class="bi bi-mortarboard"></i></div>
-              <div class="text-group">
-                <label>College</label>
-                <p>{{ profile.collegeName }}</p>
-              </div>
-            </div>
-          }
+          <div class="detail-item" *ngIf="profile.collegeName">
+            <div class="icon-box"><i class="bi bi-mortarboard"></i></div>
+            <div class="text-group"><label>College</label><p>{{ profile.collegeName }}</p></div>
+          </div>
 
-          @if (profile.gradeLevelName) {
-            <div class="detail-item">
-              <div class="icon-box"><i class="bi bi-layers"></i></div>
-              <div class="text-group">
-                <label>Grade Level</label>
-                <p>{{ profile.gradeLevelName }}</p>
-              </div>
-            </div>
-          }
 
-          @if (profile.termName) {
-            <div class="detail-item">
-              <div class="icon-box"><i class="bi bi-calendar-event"></i></div>
-              <div class="text-group">
-                <label>Term</label>
-                <p>{{ profile.termName }}</p>
-              </div>
+          <div class="detail-item clickable" (click)="toggleTheme()">
+            <div class="icon-box mode-icon">
+              <i class="bi" [ngClass]="isDarkMode ? 'bi-sun-fill' : 'bi-moon-stars-fill'"></i>
             </div>
-          }
+            <div class="text-group">
+              <label>Appearance</label>
+              <p>{{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}</p>
+            </div>
+          </div>
+
+          <div class="detail-item clickable logout-item" (click)="logout()">
+            <div class="icon-box logout-icon">
+              <i class="bi bi-box-arrow-right"></i>
+            </div>
+            <div class="text-group">
+              <label>Account</label>
+              <p>Logout from App</p>
+            </div>
+          </div>
         </div>
       </div>
 

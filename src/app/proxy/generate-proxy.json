@@ -1513,8 +1513,65 @@
                 }
               ],
               "returnValue": {
-                "type": "System.Void",
-                "typeSimple": "System.Void"
+                "type": "Dev.Acadmy.Dtos.Response.Chats.ChatMessageDto",
+                "typeSimple": "Dev.Acadmy.Dtos.Response.Chats.ChatMessageDto"
+              },
+              "allowAnonymous": false,
+              "implementFrom": "Dev.Acadmy.Chats.ChatAppService"
+            },
+            "UpdateMessageAsyncByIdAndInput": {
+              "uniqueName": "UpdateMessageAsyncByIdAndInput",
+              "name": "UpdateMessageAsync",
+              "httpMethod": "PUT",
+              "url": "api/app/chat/{id}/message",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "id",
+                  "typeAsString": "System.Guid, System.Private.CoreLib",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                },
+                {
+                  "name": "input",
+                  "typeAsString": "Dev.Acadmy.Dtos.Request.Chats.CreateUpdateChatMessageDto, Dev.Acadmy.Application.Contracts",
+                  "type": "Dev.Acadmy.Dtos.Request.Chats.CreateUpdateChatMessageDto",
+                  "typeSimple": "Dev.Acadmy.Dtos.Request.Chats.CreateUpdateChatMessageDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "id",
+                  "name": "id",
+                  "jsonName": null,
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "input",
+                  "jsonName": null,
+                  "type": "Dev.Acadmy.Dtos.Request.Chats.CreateUpdateChatMessageDto",
+                  "typeSimple": "Dev.Acadmy.Dtos.Request.Chats.CreateUpdateChatMessageDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "Dev.Acadmy.Dtos.Response.Chats.ChatMessageDto",
+                "typeSimple": "Dev.Acadmy.Dtos.Response.Chats.ChatMessageDto"
               },
               "allowAnonymous": false,
               "implementFrom": "Dev.Acadmy.Chats.ChatAppService"
@@ -1612,6 +1669,43 @@
               "returnValue": {
                 "type": "Volo.Abp.Application.Dtos.PagedResultDto<Dev.Acadmy.Dtos.Response.Chats.ChatMessageDto>",
                 "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<Dev.Acadmy.Dtos.Response.Chats.ChatMessageDto>"
+              },
+              "allowAnonymous": false,
+              "implementFrom": "Dev.Acadmy.Chats.ChatAppService"
+            },
+            "DeleteMessageAsyncById": {
+              "uniqueName": "DeleteMessageAsyncById",
+              "name": "DeleteMessageAsync",
+              "httpMethod": "DELETE",
+              "url": "api/app/chat/{id}/message",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "id",
+                  "typeAsString": "System.Guid, System.Private.CoreLib",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "id",
+                  "name": "id",
+                  "jsonName": null,
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Void",
+                "typeSimple": "System.Void"
               },
               "allowAnonymous": false,
               "implementFrom": "Dev.Acadmy.Chats.ChatAppService"
@@ -12017,6 +12111,18 @@
           "jsonName": null,
           "type": "System.Boolean",
           "typeSimple": "boolean",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "SubscriberCount",
+          "jsonName": null,
+          "type": "System.Int32",
+          "typeSimple": "number",
           "isRequired": false,
           "minLength": null,
           "maxLength": null,
