@@ -1,153 +1,74 @@
-/* Testimonials Component Styles */
-
-:host {
-  display: block;
+.testimonials-area {
+    padding: 80px 0;
+    background-color: var(--color-page-bg);
 }
 
-.testimonials {
-  background: var(--surface);
-  padding: 4rem 2rem;
-  margin:  0;
-  transition: background 0.3s ease;
-}
-
-.testimonials-description {
-  text-align: center;
-  color: var(--muted);
-  margin-bottom: 3rem;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+/* الحاوية الأساسية في الـ PC */
+.testimonials-area .flex-wrapper {
+    display: flex;
+    flex-wrap: wrap; /* تسمح بالعناصر بالنزول لسطر جديد */
+    gap: 30px;
+    justify-content: center;
 }
 
 .testimonial-card {
-  background: var(--card);
-  padding: 2rem;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-1);
-  transition: all 0.3s ease;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+    background-color: var(--bg-tem);
+    padding: 40px;
+    border-radius: 15px; /* إضافة حواف دائرية ناعمة */
+    flex: 1 1 calc(50% - 30px); /* كارتين في السطر في الشاشات الكبيرة */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 300px;
+}
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-.testimonial-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-2);
+.user-avatar {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-.testimonial-content {
-  position: relative;
-  flex: 1;
+.user-name {
+    font-size: 1rem;
+    color: var(--color-heading-text);
+    font-weight: 700;
 }
 
-.testimonial-text {
-  color: var(--muted);
-  font-style: italic;
-  margin-bottom: 2rem;
-  line-height: 1.7;
-  position: relative;
-  padding-left: 1.5rem;
+.user-role {
+    font-size: 0.85rem;
+    color: var(--color-text-p);
 }
 
-.testimonial-text:before {
-  content: "❝";
-  position: absolute;
-  left: -0.5rem;
-  top: -0.5rem;
-  font-size: 2rem;
-  color: var(--sky-300);
-  opacity: 0.5;
+.testimonial-quote {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--color-text-p);
+    font-style: italic;
+    margin-bottom: 30px;
+    /* تأكيد أن النص يلتف ولا يخرج عن الكارت */
+    word-wrap: break-word; 
+    white-space: normal;
 }
 
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
+/* --- الضبط للموبايل (تحت بعض) --- */
+@media (max-width: 992px) {
+    .testimonials-area .flex-wrapper {
+        flex-direction: column; /* ترتيب العناصر عمودياً */
+        width: 100%; /* تأخذ العرض الكامل */
+        align-items: center;
+    }
+
+    .testimonial-card {
+        flex: 1 1 auto;
+        width: 100%; /* الكارت يأخذ عرض الحاوية بالكامل */
+        max-width: 500px; /* تحديد أقصى عرض ليكون شكله أنيق */
+        padding: 30px;
+    }
 }
 
-.author-avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid var(--surface-variant);
-  transition: all 0.3s ease;
-  flex-shrink: 0;
-}
-
-.testimonial-card:hover .author-avatar {
-  border-color: var(--sky-300);
-  transform: scale(1.05);
-}
-
-.author-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.author-info {
-  flex: 1;
-}
-
-.author-name {
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 0.3rem;
-  font-size: 1.1rem;
-}
-
-.author-role {
-  color: var(--sky-300);
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.3rem;
-}
-
-.author-rating {
-  display: flex;
-  gap: 0.2rem;
-}
-
-.author-rating i {
-  color: #FFD700;
-  font-size: 0.9rem;
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .testimonials-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .testimonials {
-    padding: 3rem 1rem;
-    margin: 3rem 0;
-  }
-  
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-    max-width: 400px;
-  }
-  
-  .author-avatar {
-    width: 50px;
-    height: 50px;
-  }
-}

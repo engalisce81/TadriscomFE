@@ -8,11 +8,34 @@ import { Component } from '@angular/core';
   styleUrls: ['./hero.component.scss']
 })
 export class HeroComponent {
-  tags = [
-    { icon: 'fa-code', text: 'Frontend' },
-    { icon: 'fa-server', text: 'Backend' },
-    { icon: 'fa-mobile-alt', text: 'Mobile' },
-    { icon: 'fa-paint-brush', text: 'Graphics' },
-    { icon: 'fa-briefcase', text: 'Internship Ready' }
-  ];
+   isMenuActive = false;
+  isDarkTheme = false;
+
+  constructor() { }
+
+  ngOnInit(): void {
+    // التحقق من الثيم المخزن في localStorage عند التحميل
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'dark') {
+      this.isDarkTheme = true;
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      this.isDarkTheme = false;
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  }
+
+  toggleMenu() {
+    this.isMenuActive = !this.isMenuActive;
+  }
+
+  toggleTheme() {
+    if (this.isDarkTheme) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+    }
+  }
 }

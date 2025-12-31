@@ -1,182 +1,130 @@
-:host {
-  display: block;
+.courses-area {
+    padding: 80px 0;
+    background-color: var(--color-page-bg);
 }
 
-.courses {
-  background: linear-gradient(180deg, var(--bg), var(--surface) 100%);
-  padding: 4rem 0;
+.courses-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
 }
 
-.courses-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+.view-all {
+    color: var(--color-primary-brand);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: 0.3s;
+}
+
+.view-all:hover {
+    text-decoration: underline;
 }
 
 .course-card {
-  background: var(--card);
-  border-radius: 15px; /* حواف أنعم */
-  overflow: hidden;
-  box-shadow: var(--shadow-1);
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  border: 1px solid rgba(255,255,255,0.05);
+    padding: 0; /* إلغاء البادينج ليغطي البوكس بالكامل */
+    overflow: hidden;
+    border: 1px solid var(--color-borders);
+    width: 400px;
+    flex: 1 1 calc(33.333% - 30px);
 }
 
-.course-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow-2);
+.course-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
 }
 
-/* تنسيق الصورة العريضة */
-.course-banner {
-  width: 100%;
-  height: 180px;
-  position: relative;
+.course-body {
+    padding: 20px;
 }
 
-.full-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.course-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
-.placeholder-img {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-  color: white;
+.badge {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: 600;
 }
 
-/* الألوان الخاصة بالـ Gradients */
-.violet-gradient { background: linear-gradient(135deg, #4c1d95, #7c3aed); }
-.purple-gradient { background: linear-gradient(135deg, #7c3aed, #a855f7); }
-.bell-gradient { background: linear-gradient(135deg, #3b82f6, #0ea5e9); }
-
-/* محتوى الكارت */
-.course-content {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-/* الاسم والتقييم */
-.course-header-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 1rem;
+.rating {
+    font-size: 0.85rem;
+    color: #555;
+    font-weight: 600;
 }
 
 .course-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin: 0;
-  color: #fff; /* أو حسب الثيم */
-  flex: 1;
+    font-size: 1.1rem;
+    color: var(--color-heading-text);
+    margin-bottom: 25px;
+    line-height: 1.4;
 }
 
-.course-rating {
-  background: rgba(255, 193, 7, 0.1);
-  color: #ffc107;
-  padding: 4px 8px;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-/* الوصف */
-.course-description {
-  color: var(--muted);
-  font-size: 0.9rem;
-  line-height: 1.5;
-  margin-bottom: 1.5rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  min-height: 4.5em;
-}
-
-/* صف المدرس والـ Enroll */
-.course-instructor-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  margin-top: auto;
-}
-
-.instructor-details {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.instructor-thumb {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  border: 2px solid var(--surface-variant);
-}
-
-.instructor-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.inst-label {
-  font-size: 0.7rem;
-  color: var(--muted);
-  text-transform: uppercase;
-}
-
-.inst-name {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #fff;
-}
-
-/* زر الاشتراك */
-.btn-enroll {
-  background: var(--bg-btn, #3b82f6);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 600;
-  transition: 0.3s;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.btn-enroll:hover {
-  filter: brightness(1.2);
-}
-
-/* مراجعة أسفل الكارت */
-.course-meta-footer {
+.course-footer {
     display: flex;
-    gap: 15px;
-    margin-top: 10px;
-    font-size: 0.75rem;
-    color: var(--muted);
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--color-borders);
+    padding-top: 15px;
 }
 
-/* Responsive */
-@media (max-width: 1024px) { .courses-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 768px) { .courses-grid { grid-template-columns: 1fr; } }
+.instructor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.instructor img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.instructor span {
+    font-size: 0.85rem;
+    color: var(--color-text-p);
+}
+
+.enroll-btn {
+    color: var(--color-primary-brand);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+/* --- Mobile Scroll Logic --- */
+@media (max-width: 992px) {
+    .courses-scroll-wrapper {
+        overflow-x: auto; /* يسمح بالتمرير الأفقي */
+        padding-bottom: 20px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .courses-scroll-wrapper .flex-wrapper {
+        display: flex;
+        flex-wrap: nowrap; /* يمنع الكروت من النزول لسطر جديد */
+        gap: 20px;
+        width: max-content; /* يجعل الحاوية بعرض مجموع الكروت */
+    }
+
+    .course-card {
+        flex: 0 0 280px; /* تحديد عرض ثابت للكارت في الموبايل ليعمل التمرير */
+    }
+
+    .courses-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
+
+.badge{
+  background-color:#7C9CEA; ;
+}

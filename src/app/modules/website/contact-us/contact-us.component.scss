@@ -1,0 +1,343 @@
+/* إعدادات عامة */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.text-center { text-align: center; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+
+
+
+.btn-get-started {
+  background: var(--color-primary-brand);
+  color: white !important;
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* 2. الـ Hero وقسم العناوين */
+.contact-page {
+  background-color: var(--color-page-bg);
+  padding-top: 60px;
+}
+
+.main-title { color: var(--color-heading-text); font-size: 2.5rem; margin-bottom: 15px; }
+.sub-title { color: var(--color-text-p); max-width: 700px; margin: 0 auto 50px; line-height: 1.6; }
+
+/* 3. كروت المعلومات */
+.info-card {
+  background: var(--color-card-bg);
+  padding: 30px;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-borders);
+  .icon { font-size: 24px; margin-bottom: 15px; background: var(--color-section-bg); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+  h3 { color: var(--color-heading-text); margin-bottom: 8px; }
+  p { color: var(--color-text-p); font-size: 0.9rem; margin-bottom: 10px; }
+  a { color: var(--color-primary-brand); text-decoration: none; font-weight: 600; }
+}
+
+/* 4. الفورم (نفس شكل الصورة) */
+.form-section { padding: 60px 0; }
+.contact-form-wrapper {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-borders);
+  padding: 50px;
+  border-radius: var(--radius);
+  max-width: 800px; margin: 0 auto;
+  h2 { color: var(--color-heading-text); margin-bottom: 10px; }
+  p { color: var(--color-text-p); margin-bottom: 30px; }
+}
+
+.role-tabs {
+  display: flex; gap: 10px; margin-top: 10px; margin-bottom: 25px;width: 100%;
+  button {
+    flex: 1; padding: 12px; border: 1px solid var(--color-borders);
+    background: transparent; color: var(--color-body-text); border-radius: var(--radius);
+    cursor: pointer; &.active { background: #EEF0FF; color: var(--color-primary-brand); border-color: var(--color-primary-brand); }
+  }
+}
+
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.input-group {
+  margin-bottom: 20px;
+  label { display: block; margin-bottom: 8px; font-weight: 500; color: var(--color-heading-text); }
+  input, textarea {
+    width: 100%; padding: 12px; border: 1px solid var(--color-borders);
+    background: var(--color-section-bg); border-radius: var(--radius); color: var(--color-body-text);
+  }
+}
+
+.btn-primary-large {
+  background: var(--color-primary-brand); color: white; border: none;
+  padding: 15px 35px; border-radius: var(--radius); font-weight: 600; cursor: pointer;
+}
+
+
+.question-icon{
+    width: 100px;
+    border-radius: 50%;
+}
+
+.flex-img{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* --- استجابة الموبايل (Responsive Design) --- */
+
+@media (max-width: 992px) {
+  .navbar {
+    .nav-links, .nav-auth.pc-only {
+      display: none; // إخفاء الروابط العادية واستخدام المنيو التي صممناها سابقاً
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  /* 1. تقليل أحجام الخطوط في الهيرو */
+  .main-title {
+    font-size: 1.8rem;
+    padding: 0 10px;
+  }
+
+  .sub-title {
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+  }
+
+  /* 2. تحويل كروت المعلومات لعمود واحد */
+  .grid-3 {
+    grid-template-columns: 1fr; 
+    gap: 15px;
+  }
+
+  .info-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  /* 3. تعديل الفورم */
+  .contact-form-wrapper {
+    padding: 25px 20px; // تقليل الـ padding الداخلي
+    margin: 0 10px;     // ترك مسافة بسيطة عن حواف الشاشة
+    
+    h2 {
+      font-size: 1.4rem;
+    }
+  }
+
+  /* تحويل صف الاسم والايميل لعمود واحد بدل 2 */
+  .row {
+    grid-template-columns: 1fr; 
+    gap: 0; 
+  }
+
+  /* تحويل أزرار الاختيار (Tabs) لتكون فوق بعضها لو الشاشة صغيرة جداً */
+  .role-tabs {
+    flex-wrap: wrap;
+    button {
+      flex: 1 1 100%; // كل زر يأخذ سطر كامل
+      font-size: 0.9rem;
+      padding: 10px;
+    }
+  }
+
+  /* زر الإرسال يأخذ العرض الكامل */
+  .btn-primary-large {
+    width: 100%;
+    padding: 12px;
+  }
+
+  /* 4. قسم السؤال السريع */
+  .quick-question {
+    padding: 40px 15px;
+    h2 { font-size: 1.3rem; }
+    p { font-size: 0.9rem; }
+  }
+
+  /* 5. الفوتر */
+  .footer-bottom {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+}
+
+/* تعديلات إضافية للشاشات الصغيرة جداً (iPhone SE مثلاً) */
+@media (max-width: 480px) {
+  .logo-text {
+    font-size: 1rem;
+  }
+  
+  .contact-page {
+    padding-top: 30px;
+  }
+}
+
+.quick-question {
+  padding: 80px 0;
+  background-color: var(--color-page-bg);
+  text-align: center;
+
+  .faq-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px; // لضمان عدم تمدد النص بشكل عرضي مزعج
+    margin: 0 auto;
+  }
+
+  .faq-icon-wrapper {
+    margin-bottom: 25px;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.1); // تأثير تكبير بسيط عند المرور بالماوس
+    }
+    
+    svg {
+      filter: drop-shadow(0 4px 6px rgba(147, 155, 254, 0.3));
+    }
+  }
+
+  .faq-title {
+    color: var(--color-heading-text);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+  }
+
+  .faq-text {
+    color: var(--color-text-p);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+
+  .faq-link {
+    color: var(--color-primary-brand);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1.1rem;
+    position: relative;
+    transition: 0.3s;
+
+    // إضافة خط سفلي أنيق يظهر عند الهوفر
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--color-primary-brand);
+      transition: width 0.3s ease;
+    }
+
+    &:hover {
+      opacity: 0.8;
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+/* استجابة الموبايل لهذا القسم */
+@media (max-width: 768px) {
+  .quick-question {
+    padding: 60px 20px;
+    
+    .faq-title {
+      font-size: 1.5rem;
+    }
+    
+    .faq-text {
+      font-size: 1rem;
+    }
+  }
+}
+
+/* 3. كروت المعلومات - مع إضافة تأثيرات الهوفر */
+.info-card {
+  background: var(--color-card-bg);
+  padding: 30px;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-borders);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); // أنيميشن مرن
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  .icon {
+    font-size: 24px;
+    margin-bottom: 15px;
+    background: var(--color-section-bg);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px; // تغييرها لشكل مربع منحني قليلاً
+    transition: all 0.3s ease;
+    color: var(--color-primary-brand);
+  }
+
+  h3 { 
+    color: var(--color-heading-text); 
+    margin-bottom: 8px; 
+    transition: color 0.3s ease;
+  }
+
+  p { 
+    color: var(--color-text-p); 
+    font-size: 0.9rem; 
+    margin-bottom: 10px; 
+  }
+
+  a { 
+    color: var(--color-primary-brand); 
+    text-decoration: none; 
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  /* --- تأثيرات الهوفر (Hover Effects) --- */
+  &:hover {
+    transform: translateY(-10px); // الكارت يرتفع للأعلى
+    border-color: var(--color-primary-brand); // تغيير لون الحدود للون البراند
+    box-shadow: 0 20px 40px rgba(147, 155, 254, 0.15); // إضافة ظل ناعم جداً
+
+    .icon {
+      background: var(--color-primary-brand); // عكس الألوان في الأيقونة
+      color: white;
+      transform: rotate(-10deg) scale(1.1); // دوران بسيط للأيقونة
+    }
+
+    h3 {
+      color: var(--color-primary-brand); // تغيير لون العنوان
+    }
+  }
+
+  /* تأثير نبضي خفيف للخلفية عند الهوفر (اختياري) */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(147, 155, 254, 0.03), transparent);
+    transform: translateX(-100%);
+    transition: 0.6s;
+  }
+
+  &:hover::after {
+    transform: translateX(100%);
+  }
+}

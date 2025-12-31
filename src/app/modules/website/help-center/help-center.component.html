@@ -1,0 +1,74 @@
+<!-- help-center.component.html -->
+<div class="help-center-container">
+   
+
+    <!-- Main content -->
+    <div class="help-center-content">
+        <!-- Page header -->
+        <header class="page-header">
+            <h1>How can we help you today?</h1>
+            <p>Find answers for students, teachers, and administrators</p>
+
+            <!-- Search bar -->
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search for help, articles, or keywords..."
+                        [(ngModel)]="searchQuery" (keyup.enter)="onSearch()" #searchInput>
+                    <button class="search-btn" (click)="onSearch()">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+                <div class="search-hint" *ngIf="searchQuery">
+                    Found {{filteredTopics.length}} topics and {{filteredFAQs.length}} FAQs matching "{{searchQuery}}"
+                </div>
+            </div>
+        </header>
+
+        <!-- Common topics -->
+        <section class="topics-section" *ngIf="filteredTopics.length > 0">
+            <h2 class="section-title">Common Topics</h2>
+
+            <div class="topics-grid">
+                <div *ngFor="let topic of filteredTopics" class="topic-card" (click)="onTopicClick(topic)"
+                    [attr.aria-label]="'Open ' + topic.title + ' topic'" tabindex="0"
+                    (keyup.enter)="onTopicClick(topic)">
+                    <div class="topic-icon" [style.backgroundColor]="getTopicIconColor(topic)">
+                        <i [class]="topic.icon"></i>
+                    </div>
+                    <h3 class="topic-title">{{topic.title}}</h3>
+                    <p class="topic-description">{{topic.description}}</p>
+                    <div class="topic-link">
+                        Explore <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="filteredTopics.length === 0 && searchQuery" class="no-results">
+                No topics found matching your search. Try different keywords.
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section" *ngIf="filteredFAQs.length > 0">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+
+            <div class="faq-list">
+                <div *ngFor="let faq of filteredFAQs" class="faq-item" [class.active]="faq.isExpanded"
+                    (click)="toggleFAQ(faq)" [attr.aria-expanded]="faq.isExpanded" tabindex="0"
+                    (keyup.enter)="toggleFAQ(faq)">
+                    <div class="faq-question">
+                        <span>{{faq.question}}</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        {{faq.answer}}
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="filteredFAQs.length === 0 && searchQuery" class="no-results">
+                No FAQs found matching your search. Try different keywords.
+            </div>
+        </section>
+    </div>
+</div>

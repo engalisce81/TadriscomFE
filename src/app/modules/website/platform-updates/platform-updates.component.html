@@ -1,0 +1,92 @@
+<!-- platform-updates.component.html -->
+<div class="platform-updates-container">
+  <!-- Header Section -->
+  <header class="updates-header">
+    <h1>Platform Updates</h1>
+    <p class="header-description">
+      Stay informed about the latest features, improvements, and bug fixes designed to enhance your classroom experience
+    </p>
+    
+    <!-- Filter Navigation -->
+    <nav class="filter-nav">
+      <div class="filter-list">
+        <button 
+          *ngFor="let filter of filters"
+          class="filter-btn"
+          [class.active]="isFilterActive(filter.id)"
+          (click)="setFilter(filter.id)"
+          [attr.aria-label]="'Show ' + filter.label"
+        >
+          {{filter.label}}
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Updates Grid -->
+  <section class="updates-grid">
+    <div class="filter-info" *ngIf="activeFilter !== 'all'">
+      <h3>Showing {{filteredUpdates.length}} {{getActiveFilterLabel().toLowerCase()}}</h3>
+      <button class="clear-filter" (click)="setFilter('all')">
+        Clear filter <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="updates-list">
+      <div 
+        *ngFor="let update of filteredUpdates" 
+        class="update-card"
+        [class.new]="update.isNew"
+      >
+        <!-- Update Header -->
+        <div class="update-header">
+          <div class="update-type-badge" [class]="getTypeClass(update.type)">
+            <i [class]="getTypeIcon(update.type)"></i>
+            <span>{{update.typeLabel}}</span>
+          </div>
+          <div class="update-date">
+            {{formatDate(update.date)}}
+          </div>
+        </div>
+        
+        <!-- Update Content -->
+        <div class="update-content">
+          <h3 class="update-title">{{update.title}}</h3>
+          <p class="update-description">{{update.description}}</p>
+          <a 
+            href="{{update.linkUrl}}" 
+            class="update-link"
+            (click)="$event.preventDefault();"
+          >
+            {{update.linkText}} <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        
+        <!-- New Indicator -->
+        <div class="new-indicator" *ngIf="update.isNew">
+          <span class="new-dot"></span>
+          NEW
+        </div>
+      </div>
+    </div>
+    
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="filteredUpdates.length === 0">
+      <div class="empty-icon">
+        <i class="fas fa-inbox"></i>
+      </div>
+      <h3>No updates found</h3>
+      <p>There are no {{getActiveFilterLabel().toLowerCase()}} at the moment. Try a different filter or check back later.</p>
+      <button class="btn-primary" (click)="setFilter('all')">
+        Show All Updates
+      </button>
+    </div>
+  </section>
+
+  <!-- View All Button -->
+  <footer class="updates-footer" *ngIf="filteredUpdates.length > 0">
+    <button class="view-all-btn" (click)="viewAllPosts()">
+      View All Posts <i class="fas fa-arrow-right"></i>
+    </button>
+  </footer>
+</div>

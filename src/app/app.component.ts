@@ -1,5 +1,5 @@
 import { LoginComponent } from '@abp/ng.account';
-import { AuthService, ReplaceableComponentsService } from '@abp/ng.core';
+import { AuthService, ReplaceableComponentsService, SessionStateService } from '@abp/ng.core';
 import { eThemeLeptonXComponents } from '@abp/ng.theme.lepton-x';
 import { EmptyLayoutComponent } from '@abp/ng.theme.lepton-x/layouts';
 import { Component, OnInit } from '@angular/core';
@@ -19,7 +19,8 @@ export class AppComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private replaceableComponents: ReplaceableComponentsService
+    private replaceableComponents: ReplaceableComponentsService,
+    private sessionState: SessionStateService
   ) { }
   ngOnInit() {
     if (!this.authService.getAccessToken()) {
@@ -27,11 +28,17 @@ export class AppComponent implements OnInit {
         component: EmptyLayoutComponent,
         key: eThemeLeptonXComponents.ApplicationLayout,
       });
-    } else{
-      this.replaceableComponents.add({
-        component:LogoutComponent,
-        key: eThemeLeptonXComponents.NavItems,
-      });
-    }
+    } 
+     this.changeLanguage();
+     
+}
+
+ get currentLang(): string {
+    return this.sessionState.getLanguage();
+  }
+
+  // دالة تغيير اللغة للإصدارات الحديثة
+  changeLanguage() {
+    this.sessionState.setLanguage('en');
   }
 }

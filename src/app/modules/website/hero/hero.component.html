@@ -1,33 +1,19 @@
 <section class="hero">
-  <div class="hero-content">
-    <div class="hero-subtitle">
-      <i class="fas fa-rocket"></i>
-      {{ '::Hero:Subtitle' | abpLocalization }}
+  <div class="container hero-flex">
+    <div class="hero-content">
+      <h1>Revolutionize Learning with <span>tadriccom</span></h1>
+      <p>The unified platform connecting students, teachers, and administrators in one seamless system.
+        Experience the future of education management today.</p>
+      <div class="hero-btns">
+        <a href="#" class="btn-primary">Get Started Free</a>
+      </div>
+      <div class="hero-trust">
+        <div class="stars">★★★★★</div>
+        <span>Trusted by 500+ Institutions</span>
+      </div>
     </div>
-    
-    <h1 class="hero-title">
-      {{ '::Hero:Title' | abpLocalization }}
-    </h1>
-
-    <p class="hero-description">
-      {{ '::Hero:Description' | abpLocalization }}
-    </p>
-
-    <a href="#" class="btn-cta">
-      <i class="fas fa-play-circle"></i>
-      {{ '::Hero:CTA' | abpLocalization }}
-    </a>
-
-    <div class="tags">
-      <span *ngFor="let tag of tags" class="tag">
-        <i class="fas {{tag.icon}}"></i>
-        {{ tag.text | abpLocalization }}
-      </span>
+    <div class="hero-image">
+      <img src="assets/images/imgs/hero-img.png" alt="Dashboard Preview">
     </div>
-  </div>
-
-  <div class="hero-image">
-    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop" 
-         [alt]="'::Hero:ImageAlt' | abpLocalization">
   </div>
 </section>

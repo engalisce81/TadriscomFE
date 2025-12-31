@@ -1,55 +1,72 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { 
-  AuthService, 
-  LocalizationModule, 
+import {
+  AuthService,
+  ConfigStateService,
+  LocalizationModule,
   SessionStateService,
 } from '@abp/ng.core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginService } from 'src/app/service/loginService';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   standalone: true,
-  imports: [RouterLink, CommonModule, LocalizationModule]
+  imports: [RouterLink, CommonModule, FormsModule, LocalizationModule]
 })
 export class HeaderComponent implements OnInit {
-  isMobileMenuOpen = false;
-  isDarkMode = true;
+  isMenuActive = false;
+  isDarkTheme = false;
+
+  isTeacher = false;
+  isAdmin = false;
+  isAuthorized = false; // Note: fixed spelling from 'isAuthorize'
 
   constructor(
-    private sessionState: SessionStateService,
-    private authService: AuthService  ) {}
+    private authService: AuthService,
+    private loginService: LoginService,
+    private configState: ConfigStateService
+  ) { }
 
-  ngOnInit() {
-    // كود الثيم
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-      this.isDarkMode = false;
-      document.body.classList.add('light-mode');
+  ngOnInit(): void {
+    // 1. Handle Theme
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'dark') {
+      this.isDarkTheme = true;
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      this.isDarkTheme = false;
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+
+    // 2. Handle User Roles and Authorization
+    const currentUser = this.configState.getOne("currentUser");
+
+    this.isAuthorized = currentUser.isAuthenticated;
+
+    if (this.isAuthorized && currentUser.roles) {
+      this.isAdmin = currentUser.roles.includes('admin');
+      this.isTeacher = currentUser.roles.includes('Teacher');
+      console.log(this.isTeacher);
     }
   }
 
-  // الحصول على اللغة الحالية
-  get currentLang(): string {
-    return this.sessionState.getLanguage();
+  // ... your toggle methods
+  toggleTheme() {
+    this.isDarkTheme = !this.isDarkTheme; // Added missing toggle logic
+    const theme = this.isDarkTheme ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
   }
 
-  // دالة تغيير اللغة للإصدارات الحديثة
-  changeLanguage() {
-    const targetLang = this.currentLang === 'ar' ? 'en' : 'ar';
-    this.sessionState.setLanguage(targetLang);
+  toggleMenu() {
+    this.isMenuActive = !this.isMenuActive;
   }
-  login() {
-    this.authService.navigateToLogin();
-  }
-  toggleMobileMenu() {
-    this.isMobileMenuOpen = !this.isMobileMenuOpen;
-  }
-  toggleDarkMode() {
-    this.isDarkMode = !this.isDarkMode;
-    document.body.classList.toggle('light-mode');
-    localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
+
+  logout(){
+    this.loginService.logout();
   }
 }

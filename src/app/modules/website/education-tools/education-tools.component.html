@@ -1,0 +1,94 @@
+<!-- education-tools.component.html -->
+<div class="education-tools-container">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <h1 class="hero-title">Powerful Tools for Modern Education</h1>
+    <p class="hero-description">
+      Everything you need to manage your institution, teach effectively, and learn efficiently in one place
+    </p>
+  </section>
+
+  <!-- Core Features Section -->
+  <section class="core-features-section">
+    <div class="section-header">
+      <h2 class="section-title">Core Features</h2>
+      <p class="section-subtitle">
+        Discover the comprehensive suite of tools designed to streamline education
+      </p>
+    </div>
+
+    <div class="features-grid">
+      <div 
+        *ngFor="let feature of features" 
+        class="feature-card"
+        [class]="getFeatureCardClass(feature)"
+        (click)="onFeatureClick(feature)"
+        tabindex="0"
+        (keyup.enter)="onFeatureClick(feature)"
+      >
+        <div 
+          class="feature-icon"
+          [style.backgroundColor]="getFeatureBgColor(feature)"
+        >
+          <i 
+            [class]="feature.icon"
+            [style.color]="getFeatureIconColor(feature)"
+          ></i>
+        </div>
+        <h3 class="feature-title">{{feature.title}}</h3>
+        <p class="feature-description">{{feature.description}}</p>
+        <div class="feature-link">
+          Learn more <i class="fas fa-arrow-right"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platform Highlights Section -->
+  <section class="highlights-section">
+    <div class="highlights-container">
+      <div class="highlights-header">
+        <h2 class="highlights-title">Platform Highlights</h2>
+      </div>
+      
+      <div class="highlights-grid">
+        <div 
+          *ngFor="let highlight of highlights" 
+          class="highlight-card"
+          (click)="onHighlightClick(highlight)"
+          tabindex="0"
+          (keyup.enter)="onHighlightClick(highlight)"
+        >
+          <div class="highlight-icon">
+            <i [class]="highlight.icon"></i>
+          </div>
+          <div class="highlight-content">
+            <h3 class="highlight-title">{{highlight.title}}</h3>
+            <p class="highlight-description">{{highlight.description}}</p>
+          </div>
+          <div class="highlight-arrow">
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2 class="cta-title">Ready to transform your educational institution?</h2>
+      <p class="cta-description">
+        Join thousands of schools and districts already using tadriccom to modernize their educational experience.
+      </p>
+      <div class="cta-buttons">
+        <button class="btn-primary">
+          <i class="fas fa-calendar-check"></i> Schedule a Demo
+        </button>
+        <button class="btn-secondary">
+          <i class="fas fa-play-circle"></i> Watch Video Tour
+        </button>
+      </div>
+    </div>
+  </section>
+</div>

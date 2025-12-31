@@ -1,0 +1,79 @@
+.experience-area {
+    padding: 100px 0;
+    background-color: var(--color-page-bg);
+}
+
+.experience-card {
+    text-align: center;
+    align-items: center; /* لتوسيط المحتوى داخل الفليكس */
+    padding: 50px 30px;
+}
+
+/* تمييز الكارت الأوسط كما في الصورة */
+.featured-card {
+    border: 2px solid var(--color-primary-brand);
+    box-shadow: var(--shadow);
+}
+
+/* تصميم الدوائر الملونة (بديلة للصور) */
+.role-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 25px;
+}
+
+/* تدرجات ألوان الروت */
+.grad-student {
+    background: linear-gradient(135deg, var(--color-primary-brand), var(--color-supporting-accent));
+}
+
+.grad-teacher {
+    background: linear-gradient(135deg, var(--color-secondary-accent), var(--color-primary-brand));
+}
+
+.grad-admin {
+    background: linear-gradient(135deg, var(--color-primary-cta), var(--color-supporting-accent));
+}
+
+.role-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-primary-brand);
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    display: block;
+    opacity: 0.8;
+}
+
+/* تنسيق قائمة المميزات داخل الكارت */
+.feature-list {
+    list-style: none;
+    padding: 0;
+    text-align: left; /* محاذاة النص لليسار كما في الصورة */
+    width: 100%;
+}
+
+.feature-list li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+    color: var(--color-text-p);
+    font-size: 0.95rem;
+}
+
+/* إضافة علامة الصح (Checkmark) باستخدام CSS */
+.feature-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+/* تحسين الاستجابة للموبايل */
+@media (max-width: 992px) {
+    .experience-card {
+        flex: 1 1 100%;
+    }
+}

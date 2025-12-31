@@ -2,10 +2,18 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthRedirectGuard } from './guards/auth-redirect.guard';
 import { GuestGuard } from './guards/guest-guard';
+import { RoutesService, eLayoutType } from '@abp/ng.core';
+import { EmptyLayoutComponent } from '@abp/ng.theme.lepton-x/layouts';
 const routes: Routes = [
- 
-    {
+  
+  {
     path: '',
+    data: { EmptyLayoutComponent },
+    loadChildren: () => import('./modules/website/website.module').then(m => m.WebsiteModule),
+  },
+  
+  {
+    path: 'dash',
     pathMatch: 'full',
     canActivate:[AuthRedirectGuard],
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule),

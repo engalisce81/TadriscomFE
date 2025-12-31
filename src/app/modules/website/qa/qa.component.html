@@ -1,19 +1,40 @@
-<section class="qa-section">
-  <div class="container">
-    <h2 class="section-title">{{ '::QA:Title' | abpLocalization }}</h2>
+<section class="faq-area">
+  <div class="main-container">
+    <div class="content-header">
+      <h2 class="main-title">Frequently Asked Questions</h2>
+    </div>
 
-    <div class="accordion">
-      <div *ngFor="let item of faqItems; let i = index" 
-           class="accordion-item" 
-           [class.active]="item.active">
-        
-        <div class="accordion-header" (click)="toggleItem(i)">
-          <span class="question">{{ item.question | abpLocalization }}</span>
-          <i class="fas" [ngClass]="item.active ? 'fa-minus' : 'fa-plus'"></i>
+    <div class="faq-container">
+      <div class="faq-item" [class.active]="activeIndex === 0" (click)="toggleFAQ(0)">
+        <div class="faq-question">
+          <h3>Is tadriccom free to try?</h3>
+          <span class="faq-icon">{{ activeIndex === 0 ? '−' : '+' }}</span>
         </div>
+        <div class="faq-answer">
+          <p>Yes! We offer a 14-day free trial for institutions of all sizes. No credit card required to
+            get started.</p>
+        </div>
+      </div>
 
-        <div class="accordion-body" *ngIf="item.active">
-          <p>{{ item.answer | abpLocalization }}</p>
+      <div class="faq-item" [class.active]="activeIndex === 1" (click)="toggleFAQ(1)">
+        <div class="faq-question">
+          <h3>Can I integrate with other tools?</h3>
+          <span class="faq-icon">{{ activeIndex === 1 ? '−' : '+' }}</span>
+        </div>
+        <div class="faq-answer">
+          <p>Absolutely. tadriccom supports integrations with popular tools like Google Classroom, Zoom,
+            and Microsoft Teams to keep your workflow seamless.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" [class.active]="activeIndex === 2" (click)="toggleFAQ(2)">
+        <div class="faq-question">
+          <h3>Is my data secure?</h3>
+          <span class="faq-icon">{{ activeIndex === 2 ? '−' : '+' }}</span>
+        </div>
+        <div class="faq-answer">
+          <p>Security is our priority. We use industry-standard encryption and follow strict GDPR
+            guidelines to ensure all institutional and student data remains private.</p>
         </div>
       </div>
     </div>

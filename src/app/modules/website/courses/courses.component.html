@@ -1,55 +1,73 @@
-<section class="courses" id="courses">
-    <div class="container">
-        <h2 class="section-title">
-            <i class="fas fa-book"></i>
-            Our Featured Courses
-        </h2>
-
-        <div *ngIf="loading" class="text-center">Loading...</div>
-
-        <div class="courses-grid" *ngIf="!loading">
-            <div *ngFor="let course of courses; let i = index" class="course-card">
-                
-                <div class="course-banner">
-                    <img *ngIf="course.logoUrl" [src]="course.logoUrl" alt="course cover" class="full-img">
-                    <div *ngIf="!course.logoUrl" class="placeholder-img" [class]="getGradientClass(i)">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
+<section class="courses-area">
+        <div class="main-container">
+            <div class="courses-header">
+                <div class="header-text">
+                    <h2 class="main-title">Explore Popular Courses</h2>
+                    <p class="sub-description">Join thousands of students learning new skills.</p>
                 </div>
+                <a href="#" class="view-all">View all courses &rarr;</a>
+            </div>
 
-                <div class="course-content">
-                    <div class="course-header-flex">
-                        <h3 class="course-title">{{course.name}}</h3>
-                        <div class="course-rating">
-                            <i class="fas fa-star"></i>
-                            <span>{{course.rating}}</span>
+            <div class="courses-scroll-wrapper">
+                <div class="flex-wrapper">
+
+                    <div class="info-box course-card">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80"
+                            alt="Tech" class="course-img">
+                        <div class="course-body">
+                            <div class="course-meta">
+                                <span class="badge bg-blue" >Technology</span>
+                                <span class="rating">⭐ 4.9</span>
+                            </div>
+                            <h3 class="course-title">Intro to Web Development</h3>
+                            <div class="course-footer">
+                                <div class="instructor">
+                                    <img src="https://i.pravatar.cc/150?u=1" alt="avatar">
+                                    <span>Dr. Smith</span>
+                                </div>
+                                <a href="#" class="enroll-btn">Enroll</a>
+                            </div>
                         </div>
                     </div>
 
-                    <p class="course-description">{{course.description}}</p>
-
-                    <div class="course-instructor-row">
-                        <div class="instructor-details">
-                            <img src="https://ui-avatars.com/api/?name=Instructor&background=random" alt="instructor" class="instructor-thumb">
-                            <div class="instructor-text">
-                                <span class="inst-label">Instructor</span>
-                                <span class="inst-name">{{course.userName}}</span> </div>
-                        </div>
-
-                        <div class="enroll-action">
-                            <a href="#" class="btn-enroll">
-                                <i class="fas" [ngClass]="course.alreadyJoin ? 'fa-check' : 'fa-shopping-cart'"></i>
-                                {{ course.alreadyJoin ? 'Joined' : 'Enroll' }}
-                            </a>
+                    <div class="info-box course-card">
+                        <img src="assets/images/imgs/course-1.png" alt="Design" class="course-img">
+                        <div class="course-body">
+                            <div class="course-meta">
+                                <span class="badge bg-purple">Design</span>
+                                <span class="rating">⭐ 4.8</span>
+                            </div>
+                            <h3 class="course-title">UI/UX Design Fundamentals</h3>
+                            <div class="course-footer">
+                                <div class="instructor">
+                                    <img src="https://i.pravatar.cc/150?u=2" alt="avatar">
+                                    <span>Sarah J.</span>
+                                </div>
+                                <a href="#" class="enroll-btn">Enroll</a>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="course-meta-footer">
-                         <span><i class="fas fa-signal"></i> {{course.gradelevelName}}</span>
-                         <span><i class="far fa-clock"></i> {{course.durationInDays}} Weeks</span>
+                    <div class="info-box course-card">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80"
+                            alt="Marketing" class="course-img">
+                        <div class="course-body">
+                            <div class="course-meta">
+                                <span class="badge bg-cyan">Business</span>
+                                <span class="rating">⭐ 4.7</span>
+                            </div>
+                            <h3 class="course-title">Digital Marketing 101</h3>
+                            <div class="course-footer">
+                                <div class="instructor">
+                                    <img src="https://i.pravatar.cc/150?u=3" alt="avatar">
+                                    <span>Mike R.</span>
+                                </div>
+                                <a href="#" class="enroll-btn">Enroll</a>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>

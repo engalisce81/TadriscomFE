@@ -1,0 +1,78 @@
+<!-- pricing-plans.component.html -->
+<div class="pricing-container">
+  <!-- Header Section -->
+  <header class="pricing-header">
+    <h1>Flexible Plans for Every Classroom</h1>
+    <p class="header-description">
+      Empower your students and teachers with the tools they need. 
+      Choose the plan that best fits your school, from single classrooms to entire districts
+    </p>
+    
+    <!-- Billing Toggle -->
+    <div class="billing-toggle-container">
+      <div class="billing-toggle">
+        <span class="billing-label" [class.active]="billingCycle === 'monthly'">Monthly</span>
+        <div class="toggle-switch" (click)="toggleBillingCycle()" tabindex="0" (keyup.enter)="toggleBillingCycle()">
+          <div class="toggle-slider" [class.yearly]="billingCycle === 'yearly'"></div>
+        </div>
+        <span class="billing-label" [class.active]="billingCycle === 'yearly'">
+          Yearly
+          <span class="savings-badge">Save 20%</span>
+        </span>
+      </div>
+      <p class="billing-note" *ngIf="billingCycle === 'yearly'">
+        Billed annually. Save ${{calculateYearlySavings()}} on Pro plan compared to monthly billing.
+      </p>
+    </div>
+  </header>
+
+  <!-- Pricing Plans -->
+  <section class="plans-section">
+    <div class="plans-grid">
+      <div 
+        *ngFor="let plan of plans" 
+        [class]="getPlanCardClass(plan)"
+      >
+        <!-- Plan Tag -->
+        <div class="plan-tag" *ngIf="plan.tagline">
+          {{plan.tagline}}
+        </div>
+        
+        <!-- Plan Header -->
+        <div class="plan-header">
+          <h3 class="plan-name">{{plan.name}}</h3>
+          <div class="plan-price">
+            <span class="price-amount">{{getPriceDisplay(plan)}}</span>
+            <span class="price-period" *ngIf="!plan.isCustom">
+              {{billingCycle === 'monthly' ? 'per month' : 'per year'}}
+            </span>
+          </div>
+          <p class="plan-description">{{plan.description}}</p>
+        </div>
+        
+        <!-- Plan Button -->
+        <button 
+          [class]="getButtonColorClass(plan)"
+          (click)="selectPlan(plan)"
+        >
+          {{plan.buttonText}}
+        </button>
+        
+        <!-- Plan Features -->
+        <ul class="plan-features">
+          <li *ngFor="let feature of plan.features">
+            <i class="fas fa-check"></i>
+            <span [innerHTML]="feature"></span>
+          </li>
+        </ul>
+        
+        <!-- Popular Badge for Mobile -->
+        <div class="mobile-popular-badge" *ngIf="plan.isPopular">
+          Most Popular
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+</div>

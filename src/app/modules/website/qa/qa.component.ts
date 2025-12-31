@@ -10,18 +10,13 @@ import { LocalizationModule } from '@abp/ng.core';
   styleUrls: ['./qa.component.scss']
 })
 export class QaComponent {
-  // مصفوفة الأسئلة مع مفاتيح الترجمة
-  faqItems = [
-    { question: '::QA:Q1', answer: '::QA:A1', active: false },
-    { question: '::QA:Q2', answer: '::QA:A2', active: false },
-    { question: '::QA:Q3', answer: '::QA:A3', active: false }
-  ];
+  activeIndex: number | null = 0;
 
-  toggleItem(index: number) {
-    this.faqItems[index].active = !this.faqItems[index].active;
-    // لإغلاق الباقي عند فتح واحد (اختياري)
-    this.faqItems.forEach((item, i) => {
-      if (i !== index) item.active = false;
-    });
+  toggleFAQ(index: number) {
+    if (this.activeIndex === index) {
+      this.activeIndex = null;
+    } else {
+      this.activeIndex = index;
+    }
   }
 }

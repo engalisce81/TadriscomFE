@@ -1,74 +1,67 @@
-<header>
-  <div class="header-container">
-    <a href="#" class="logo">
-      <i class="fas fa-graduation-cap"></i>
-      <span>Tadriscom</span>
+<nav class="navbar">
+  <div class="container">
+    <a routerLink="/" class="logo">
+      <svg class="logo-icon" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z" />
+      </svg>
+      <span class="logo-text">tadriccom</span>
     </a>
-    
-    <nav class="desktop-nav">
-      <a href="#plan">
-        <i class="fas fa-calendar-alt"></i>
-        {{ '::Menu:Plan' | abpLocalization }}
-      </a>
-      <a routerLink="dash">
-        <i class="fas fa-chalkboard-teacher"></i>
-        {{ '::Menu:Teach' | abpLocalization }}
-      </a>
-      <a href="#posts">
-        <i class="fas fa-blog"></i>
-        {{ '::Menu:Blog' | abpLocalization }}
-      </a>
-      <a href="#courses">
-        <i class="fas fa-book-open"></i>
-        {{ '::Menu:Courses' | abpLocalization }}
-      </a>
 
-      <div class="lang-switch" (click)="changeLanguage()">
-        <i class="fas fa-globe"></i>
-        <span>{{ currentLang === 'ar' ? 'English' : 'عربي' }}</span>
-      </div>
+    <div class="menu-toggle" id="mobile-menu" (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
 
-      <div class="mode-toggle" (click)="toggleDarkMode()">
-        <span class="mode-toggle-icon sun">☀️</span>
-        <span class="mode-toggle-icon moon">🌙</span>
-      </div>
+    <ul class="nav-links" id="nav-list" [class.active]="isMenuActive">
+      <li><a routerLink="education-tools" class="active">Features</a></li>
+      <li><a routerLink="how-it-works">How it Works</a></li>
+      <li><a routerLink="courses">Courses</a></li>
+      <li><a routerLink="price">Pricing</a></li>
 
-      <a href="#login" class="btn-login">
-        <i class="fas fa-sign-in-alt"></i>
-        {{ '::Menu:Login' | abpLocalization }}
-      </a>
-    </nav>
-    
-    <button class="mobile-menu-btn" (click)="toggleMobileMenu()">
-      <i class="fas fa-bars"></i>
-    </button>
+      <li class="mobile-only"><hr></li>
+
+      @if (!isAuthorized) {
+        <li class="mobile-only"><a routerLink="account" class="login-link">Login</a></li>
+        <li class="mobile-only" style="margin-top: 15px;">
+          <a routerLink="/account/register" class="btn-get-started">Get Started</a>
+        </li>
+      } @else {
+        @if (isAdmin) {
+          <li class="mobile-only"><a routerLink="dash">Admin Dashboard</a></li>
+        } @else if (isTeacher) {
+          <li class="mobile-only"><a routerLink="dash">Teacher Panel</a></li>
+        }
+        <li class="mobile-only" style="margin-top: 15px;">
+          <a  (click)="logout()" class="login-link">Logout</a>
+        </li>
+      }
+
+      <li class="theme-switch-item">
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" [(ngModel)]="isDarkTheme" (change)="toggleTheme()" />
+            <div class="slider round">
+              <span class="icon-sun"></span>
+              <span class="icon-moon"></span>
+            </div>
+          </label>
+        </div>
+      </li>
+    </ul>
+
+    <div class="nav-auth pc-only">
+      @if (!isAuthorized) {
+        <a routerLink="/account" class="login-link">Login</a>
+        <a routerLink="/account/register" class="btn-get-started">Get Started</a>
+      } @else {
+        @if (isAdmin) {
+          <a routerLink="dash" class="login-link">Admin Area</a>
+        } @else if (isTeacher) {
+          <a routerLink="dash" class="login-link">Teacher Panel</a>
+        }
+        <button (click)="logout()" class="btn-get-started">Logout</button>
+      }
+    </div>
   </div>
-  
-  <div class="mobile-nav-overlay" [class.active]="isMobileMenuOpen" (click)="toggleMobileMenu()"></div>
-  <nav class="mobile-nav" [class.active]="isMobileMenuOpen">
-    <div class="mobile-nav-header">
-      <h3>{{ '::Menu:Title' | abpLocalization }}</h3>
-      <button class="mobile-close-btn" (click)="toggleMobileMenu()">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    
-    <div class="mobile-links">
-        <a href="#teach"><i class="fas fa-chalkboard-teacher"></i> {{ '::Menu:Teach' | abpLocalization }}</a>
-        <a href="#posts"><i class="fas fa-blog"></i> {{ '::Menu:Blog' | abpLocalization }}</a>
-        <a href="#courses"><i class="fas fa-book-open"></i> {{ '::Menu:Courses' | abpLocalization }}</a>
-        <a href="#login"><i class="fas fa-sign-in-alt"></i> {{ '::Menu:Login' | abpLocalization }}</a>
-    </div>
-
-    <div class="mobile-footer-actions">
-        <div class="action-item" (click)="changeLanguage()">
-            <i class="fas fa-globe"></i>
-            <span>{{ currentLang === 'ar' ? 'English' : 'العربية' }}</span>
-        </div>
-        <div class="action-item" (click)="toggleDarkMode()">
-            <i class="fas" [ngClass]="isDarkMode ? 'fa-sun' : 'fa-moon'"></i>
-            <span>{{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}</span>
-        </div>
-    </div>
-  </nav>
-</header>
+</nav>

@@ -1,82 +1,53 @@
-<footer>
-  <div class="footer-content">
-    <div class="footer-column">
-      <h3>
-        <i class="fas fa-graduation-cap"></i>
-        Tadriscom
-      </h3>
-      <p>Your gateway to the job market. Learn from industry experts, test your skills with real assessments, earn a certified diploma, and gain hands-on training.</p>
-      <div class="social-links">
-        <a *ngFor="let social of socialLinks" 
-           [href]="social.link" 
-           [attr.aria-label]="social.label"
-           target="_blank" 
-           rel="noopener noreferrer">
-          <i [class]="social.icon"></i>
-        </a>
+<footer class="main-footer">
+  <div class="main-container">
+    <div class="footer-flex">
+
+      <div class="footer-col brand-col">
+        <div class="footer-logo">
+          <span class="logo-icon"> <img src="assets/images/imgs/icon.png" alt=""> </span>
+          <span class="logo-text">tadriccom</span>
+        </div>
+        <p class="footer-desc">Making education management simple, effective, and accessible for everyone.
+        </p>
       </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a  routerLink="education-tools">Features</a></li>
+          <li><a  routerLink="price" >Pricing</a></li>
+          <li><a routerLink="update">Updates</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Blog</a></li>
+          <li><a routerLink="help">Help Center</a></li>
+          <li><a routerLink="community" >Community</a></li>
+          <li><a href="#">Webinars</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a routerLink="about">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Legal</a></li>
+          <li><a routerLink="contact">Contact</a></li>
+        </ul>
+      </div>
+
     </div>
-    
-    <div class="footer-column">
-      <h3>
-        <i class="fas fa-link"></i>
-        Quick Links
-      </h3>
-      <ul>
-        <li *ngFor="let link of quickLinks">
-          <a [routerLink]="link.path">
-            <i [class]="'fas ' + link.icon"></i>
-            {{link.text}}
-          </a>
-        </li>
-      </ul>
-    </div>
-    
-    <div class="footer-column">
-      <h3>
-        <i class="fas fa-graduation-cap"></i>
-        Courses
-      </h3>
-      <ul>
-        <li *ngFor="let course of courses">
-          <a [routerLink]="course.path">
-            <i [class]="'fas ' + course.icon"></i>
-            {{course.text}}
-          </a>
-        </li>
-      </ul>
-    </div>
-    
-    <div class="footer-column">
-      <h3>
-        <i class="fas fa-envelope"></i>
-        Contact Us
-      </h3>
-      <ul>
-        <li *ngFor="let contact of contactInfo">
-          <a *ngIf="contact.link" [href]="contact.link">
-            <i [class]="'fas ' + contact.icon"></i>
-            {{contact.text}}
-          </a>
-          <span *ngIf="!contact.link">
-            <i [class]="'fas ' + contact.icon"></i>
-            {{contact.text}}
-          </span>
-        </li>
-      </ul>
-    </div>
-  </div>
-  
-  <div class="footer-bottom">
-    <div>
-      <i class="far fa-copyright"></i>
-      {{currentYear}} Tadriscom. All rights reserved.
-    </div>
-    <div class="footer-links">
-      <a *ngFor="let link of footerBottomLinks" href="#">
-        <i class="fas fa-circle"></i>
-        {{link.text}}
-      </a>
+
+    <div class="footer-bottom">
+      <p>2025 tadriccom Inc. All rights reserved.</p>
+      <div class="bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
     </div>
   </div>
 </footer>

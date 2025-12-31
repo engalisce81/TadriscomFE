@@ -9,7 +9,7 @@ function configureRoutes(routesService: RoutesService) {
   return () => {
     routesService.add([
     {
-      path: '/',
+      path: '/dash',
       name: 'Home',
       iconClass: 'fas fa-home',
       order: 1,
