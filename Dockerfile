@@ -16,7 +16,7 @@ RUN yarn build --configuration production
 
 # Debug: عرض محتويات dist
 RUN ls -la /app/dist/
-
+  
 # Production stage
 FROM nginx:alpine
 
