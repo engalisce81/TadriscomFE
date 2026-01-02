@@ -67,7 +67,7 @@ export class RegisterComponent {
     this.accountService.register(this.registerDto).subscribe({
       next: (res) => {
         this.loading = false; // 🔹 إيقاف الـ Loading
-        this.router.navigateByUrl('/accountc');
+        this.router.navigateByUrl('/account');
       },
       error: (err) => {
         this.loading = false; // 🔹 إيقاف الـ Loading

@@ -2,6 +2,7 @@
 import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { SubFooterComponent } from "../sub-footer/sub-footer.component";
 
 interface Topic {
   id: number;
@@ -22,7 +23,7 @@ interface FAQ {
   selector: 'app-help-center',
   templateUrl: './help-center.component.html',
   styleUrls: ['./help-center.component.scss'],
-  imports:[NgFor,NgIf,FormsModule],
+  imports: [NgFor, NgIf, FormsModule, SubFooterComponent],
   standalone: true  // Or set to true if using standalone components
 })
 export class HelpCenterComponent implements OnInit, OnDestroy {

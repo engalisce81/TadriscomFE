@@ -7,61 +7,61 @@
       <span class="logo-text">tadriccom</span>
     </a>
 
-    <div class="menu-toggle" id="mobile-menu" (click)="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
+    <div class="menu-toggle" [class.active]="isMenuActive" (click)="toggleMenu()">
+      <span></span><span></span><span></span>
     </div>
 
-    <ul class="nav-links" id="nav-list" [class.active]="isMenuActive">
-      <li><a routerLink="education-tools" class="active">Features</a></li>
-      <li><a routerLink="how-it-works">How it Works</a></li>
-      <li><a routerLink="courses">Courses</a></li>
-      <li><a routerLink="price">Pricing</a></li>
+    <ul class="nav-links" [class.active]="isMenuActive">
+      <li><a href="#features-section" routerLinkActive="active">Features</a></li>
+      <li> <a href="#courses-section" routerLinkActive="active">Courses</a> </li>
+      <li><a href="#price-section" routerLinkActive="active">Pricing</a></li>
+      <li><a href="#footer-section" routerLinkActive="active">How it Works</a></li>
 
-      <li class="mobile-only"><hr></li>
+      <li class="mobile-only">
+        <hr>
+      </li>
 
-      @if (!isAuthorized) {
-        <li class="mobile-only"><a routerLink="account" class="login-link">Login</a></li>
-        <li class="mobile-only" style="margin-top: 15px;">
-          <a routerLink="/account/register" class="btn-get-started">Get Started</a>
-        </li>
-      } @else {
-        @if (isAdmin) {
-          <li class="mobile-only"><a routerLink="dash">Admin Dashboard</a></li>
-        } @else if (isTeacher) {
-          <li class="mobile-only"><a routerLink="dash">Teacher Panel</a></li>
-        }
-        <li class="mobile-only" style="margin-top: 15px;">
-          <a  (click)="logout()" class="login-link">Logout</a>
-        </li>
-      }
+      <li class="mobile-only" *ngIf="!isAuthorized">
+        <div class="auth-flex-mobile">
+          <a routerLink="/account" class="login-link">Login</a>
+          <a routerLink="/account/register" class="btn-primary-action">Get Started</a>
+        </div>
+      </li>
 
-      <li class="theme-switch-item">
-        <div class="theme-switch-wrapper">
-          <label class="theme-switch" for="checkbox">
-            <input type="checkbox" id="checkbox" [(ngModel)]="isDarkTheme" (change)="toggleTheme()" />
-            <div class="slider round">
-              <span class="icon-sun"></span>
-              <span class="icon-moon"></span>
-            </div>
-          </label>
+      <li class="mobile-only" *ngIf="isAuthorized">
+        <div class="auth-flex-mobile">
+          <a routerLink="dashboard" class="login-link">
+            {{ isAdmin ? 'Admin Area' : (isTeacher ? 'Teacher Panel' : 'Dashboard') }}
+          </a>
+          <button (click)="logout()" class="btn-logout">Logout</button>
         </div>
       </li>
     </ul>
 
     <div class="nav-auth pc-only">
-      @if (!isAuthorized) {
+      <ng-container *ngIf="!isAuthorized">
         <a routerLink="/account" class="login-link">Login</a>
-        <a routerLink="/account/register" class="btn-get-started">Get Started</a>
-      } @else {
-        @if (isAdmin) {
-          <a routerLink="dash" class="login-link">Admin Area</a>
-        } @else if (isTeacher) {
-          <a routerLink="dash" class="login-link">Teacher Panel</a>
-        }
-        <button (click)="logout()" class="btn-get-started">Logout</button>
-      }
+        <a routerLink="/account/register" class="btn-primary-action">Get Started</a>
+      </ng-container>
+
+      <ng-container *ngIf="isAuthorized">
+        <a routerLink="dashboard" class="login-link">
+          {{ isAdmin ? 'Admin Area' : (isTeacher ? 'Teacher Panel' : 'Dashboard') }}
+        </a>
+        <button (click)="logout()" class="btn-logout">Logout</button>
+      </ng-container>
     </div>
   </div>
 </nav>
+
+<div class="floating-container">
+  <button class="float-btn scroll-top" [class.show]="showScrollBtn" (click)="scrollToTop()">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+  <a href="https://wa.me/201234567890" target="_blank" class="float-btn whatsapp-btn">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <button class="float-btn theme-btn" (click)="toggleTheme()">
+    <i [class]="isDarkTheme ? 'fas fa-sun' : 'fas fa-moon'"></i>
+  </button>
+</div>

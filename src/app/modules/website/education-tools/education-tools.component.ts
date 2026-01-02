@@ -1,6 +1,8 @@
 // education-tools.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { FooterComponent } from "../footer/footer.component";
+import { SubFooterComponent } from "../sub-footer/sub-footer.component";
 
 interface Feature {
   id: number;
@@ -22,7 +24,7 @@ interface PlatformHighlight {
   templateUrl: './education-tools.component.html',
   styleUrls: ['./education-tools.component.scss'],
   standalone: true,
-  imports:[NgFor,NgIf]
+  imports: [NgFor, SubFooterComponent]
 })
 export class EducationToolsComponent implements OnInit {
   // Core features data

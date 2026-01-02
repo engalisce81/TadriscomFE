@@ -13,7 +13,7 @@ function configureRoutes(routesService: RoutesService) {
       name: 'Home',
       iconClass: 'fas fa-home',
       order: 1,
-      layout: eLayoutType.application,
+      layout: eLayoutType.empty,
     },
     {
       path: 'universties',
@@ -21,7 +21,8 @@ function configureRoutes(routesService: RoutesService) {
       iconClass: 'fas fa-university',
       order: 2,
       layout: eLayoutType.application,
-      requiredPolicy: 'Acadmy.Universites',
+            requiredPolicy: 'Acadmy.Universites',
+
     },
     {
       path: 'courses',

@@ -1,3 +1,4 @@
+/* --- المبادئ الأساسية --- */
 .navbar {
   background-color: var(--color-main-bg);
   border-bottom: 1px solid var(--color-borders);
@@ -18,110 +19,126 @@
   align-items: center;
 }
 
-/* اللوجو */
 .logo {
   display: flex;
   align-items: center;
   gap: 10px;
   text-decoration: none;
+  .logo-icon { width: 32px; color: var(--color-primary-brand); }
+  .logo-text { font-size: 1.4rem; font-weight: 700; color: var(--color-heading-text); }
 }
 
-.logo-icon {
-  width: 32px;
-  height: 32px;
-  color: var(--color-primary-brand);
-}
-
-.logo-text {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--color-heading-text);
-}
-
-/* الروابط */
+/* --- القائمة والروابط --- */
 .nav-links {
   display: flex;
   list-style: none;
   gap: 30px;
   align-items: center;
+  margin: 0;
+  padding: 0;
+  
+  a {
+    text-decoration: none;
+    color: var(--color-body-text);
+    font-weight: 500;
+    transition: 0.3s;
+    &.active, &:hover { color: var(--color-primary-brand); }
+  }
 }
 
-.nav-links a {
-  text-decoration: none;
-  color: var(--color-body-text);
-  font-weight: 500;
-  font-size: 0.95rem;
-  transition: 0.3s;
-}
-
-.nav-links a:hover, .nav-links a.active {
-  color: var(--color-primary-brand);
-}
-
-/* الأزرار */
-.nav-auth {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
+/* --- الأزرار --- */
+.nav-auth { display: flex; gap: 20px; align-items: center; }
 
 .login-link {
   text-decoration: none;
   color: var(--color-body-text);
-  font-weight: 500;
-}
-
-.btn-get-started {
-  background-color: var(--color-primary-brand);
-  color: var(--color-text-btn) !important;
-  padding: 10px 22px;
-  border-radius: 8px;
-  text-decoration: none;
   font-weight: 600;
-  box-shadow: var(--shadow);
+  white-space: nowrap;
+}
+
+.btn-primary-action {
+  background-color: var(--color-primary-brand);
+  color: white !important;
+  padding: 10px 24px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
   transition: 0.3s;
+  &:hover { background-color: var(--color-primary-hover); transform: translateY(-2px); }
 }
 
-.btn-get-started:hover {
-  background-color: var(--color-primary-hover);
-  transform: translateY(-1px);
+/* --- العناصر العائمة --- */
+.floating-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 2000;
 }
 
-/* زر الموبايل */
+.float-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  transition: 0.3s;
+  border: none;
+  &:hover { transform: scale(1.1); }
+}
+
+.scroll-top {
+  background-color: var(--color-primary-brand);
+  opacity: 0; visibility: hidden;
+  &.show { opacity: 1; visibility: visible; }
+}
+
+.whatsapp-btn { background-color: #25D366; text-decoration: none; }
+.theme-btn { background-color: var(--color-section-bg); color: var(--color-primary-brand); border: 1px solid var(--color-borders); }
+
+/* --- الجوال (Mobile) --- */
 .menu-toggle {
   display: none;
   flex-direction: column;
-  gap: 5px;
-}
-
-.menu-toggle span {
-  width: 25px;
-  height: 2px;
-  background-color: var(--color-heading-text);
-  transition: 0.3s;
+  gap: 6px;
+  span { width: 28px; height: 3px; background-color: var(--color-heading-text); transition: 0.4s; }
+  &.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+  &.active span:nth-child(2) { opacity: 0; }
+  &.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 }
 
 .mobile-only { display: none; }
 
-/* 4. استجابة الموبايل */
 @media (max-width: 992px) {
+  .pc-only { display: none !important; }
+  .mobile-only { display: block; }
   .menu-toggle { display: flex; }
-  .pc-only { display: none; }
 
   .nav-links {
     position: fixed;
-    top: 80px;
-    right: -100%;
-    width: 100%;
-    height: calc(100vh - 80px);
+    top: 80px; right: -100%;
+    width: 100%; height: calc(100vh - 80px);
     background-color: var(--color-main-bg);
     flex-direction: column;
     padding: 40px 20px;
-    transition: 0.4s ease-in-out;
+    transition: 0.4s;
+    &.active { right: 0; }
   }
 
-  .nav-links.active { right: 0; }
-  .nav-links li { width: 100%; text-align: center; }
-  .mobile-only { display: block; width: 100%; }
-  .mobile-only hr { border: 0; border-top: 1px solid var(--color-borders); margin: 20px 0; }
+  .auth-flex-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    align-items: center;
+    .btn-primary-action, .btn-logout { width: 80%; text-align: center; }
+  }
 }

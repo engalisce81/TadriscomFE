@@ -6,8 +6,8 @@ export const environment = {
   production: false,
   application: {
     baseUrl,
-    name: 'Progress',
-    logoUrl: 'https://i.postimg.cc/1RvZJShw/Whats-App-Image-2025-09-13-at-21-54-29-e593bcc7.jpg',
+    name: 'Tadriscom',
+    logoUrl: '/assets/images/imgs/Tadriscom.jpeg',
   },
   oAuthConfig: {
     issuer: 'https://localhost:44318/',
@@ -20,7 +20,7 @@ export const environment = {
   apis: {
     default: {
       url: 'https://localhost:44318',
-      rootNamespace: 'Dev.Progress',
+      rootNamespace: 'Tadriscom',
     },
   },
 } as Environment; 

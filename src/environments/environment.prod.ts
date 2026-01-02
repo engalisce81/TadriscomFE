@@ -7,7 +7,7 @@ export const environment = {
   application: {
     baseUrl,
     name: 'Tadriscom',
-    logoUrl: 'https://i.postimg.cc/G24yXvg7/Tadriscom.jpg',
+    logoUrl: '/assets/images/imgs/Tadriscom.jpeg',
   },
   oAuthConfig: {
     issuer: 'https://dev-acadmy-httpapi-production-8469.up.railway.app/',
@@ -20,7 +20,7 @@ export const environment = {
   apis: {
     default: {
       url: 'https://dev-acadmy-httpapi-production-8469.up.railway.app',
-      rootNamespace: 'Dev.Progress',
+      rootNamespace: 'Tadriscom',
     },
   },
 } as Environment;

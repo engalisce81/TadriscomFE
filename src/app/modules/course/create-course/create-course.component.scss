@@ -1,12 +1,11 @@
-/* --- المتغيرات والأساسيات --- */
+/* ===== المتغيرات والأساسيات ===== */
 .list-container {
   padding: 24px;
   min-height: 100vh;
-  background: var(--bg-body);
-  direction: ltr;
+  background: var(--color-main-bg);
 }
 
-/* --- الهيدر والأزرار (Toolbar) --- */
+/* ===== الهيدر والأزرار الرئيسية ===== */
 .toolbar {
   display: flex;
   justify-content: space-between;
@@ -16,102 +15,255 @@
   flex-wrap: wrap;
 }
 
-.filter-buttons {
+.toolbar .header h2 {
+  color: var(--color-heading-text);
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.toolbar .header .subtitle {
+  color: var(--color-text-p);
+  font-size: 0.9rem;
+  margin: 5px 0 0;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background-color: var(--color-section-bg);
+  color: var(--color-body-text);
+  border: 1px solid var(--color-borders);
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-back i {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+.btn-back:hover {
+  background-color: var(--color-section-bg-seconed);
+  color: var(--color-primary-brand);
+  border-color: var(--color-primary-brand);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-1);
+}
+
+.btn-back:hover i {
+  transform: translateX(-5px);
+}
+
+/* ===== أزرار نوع الكورس ===== */
+.course-type-tabs {
   display: flex;
-  gap: 12px;
-  
-  .btn-filter {
-    background: var(--surface);
-    border: 1px solid var(--surface-variant);
-    color: var(--text);
-    padding: 10px 20px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-    &:hover {
-      background: var(--surface-variant);
-      border-color: var(--purple-600);
-      transform: translateY(-2px);
-    }
-
-    &.active {
-      background: var(--purple-600);
-      color: white;
-      border-color: transparent;
-      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
-    }
-  }
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 
-/* --- كارت الفورم (Form Card) --- */
+.tab-btn {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-borders);
+  color: var(--color-body-text);
+  padding: 12px 24px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.tab-btn:hover {
+  background: var(--color-section-bg);
+  border-color: var(--color-primary-brand);
+  transform: translateY(-2px);
+}
+
+.tab-btn.active {
+  background: var(--color-primary-brand);
+  color: var(--color-text-btn);
+  border-color: transparent;
+  box-shadow: var(--shadow-2);
+}
+
+/* ===== كارت الفورم الرئيسي ===== */
 .form-card {
-  background: var(--dialog);
+  background: var(--color-card-bg);
   padding: 30px;
-  border-radius: 20px;
+  border-radius: calc(var(--radius) * 2);
   width: 100%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: var(--shadow-3);
+  border: 1px solid var(--color-borders);
   animation: modalSlideUp 0.4s ease-out;
-  border: 1px solid var(--surface-variant);
-
-  .form-section {
-    margin-top: 25px;
-    h3 { color: var(--text); font-size: 1.1rem; margin-bottom: 15px; }
-  }
 }
 
-/* --- الحقول والمدخلات --- */
+/* ===== الحقول والمدخلات ===== */
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   text-align: left;
-
-  label { 
-    display: block; 
-    margin-bottom: 8px; 
-    color: var(--muted); 
-    font-size: 0.9rem;
-    font-weight: 500;
-  }
-  
-  .form-control {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.02) !important;
-    border: 1px solid var(--surface-variant);
-    border-radius: 12px;
-    padding: 14px;
-    color: var(--text);
-    transition: all 0.2s ease;
-
-    &:focus {
-      outline: none;
-      border-color: var(--purple-600);
-      background: rgba(255, 255, 255, 0.05) !important;
-      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
-    }
-  }
 }
 
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--color-heading-text);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.video-label,
+.pdf-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pdf-label {
+  color: var(--color-secondary-accent);
+}
+
+.form-control {
+  width: 100%;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-borders);
+  border-radius: var(--radius);
+  padding: 14px;
+  color: var(--color-body-text);
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--color-primary-brand);
+  box-shadow: var(--ring);
+  background: var(--color-section-bg);
+}
+
+.form-control::placeholder {
+  color: var(--color-text-p);
+  opacity: 0.7;
+}
+
+textarea.form-control {
+  min-height: 120px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+select.form-control {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23888' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+/* ===== تخطيط الصفوف ===== */
 .row-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-  
-  @media (max-width: 600px) { grid-template-columns: 1fr; }
 }
 
-/* --- الخيارات (Checkboxes) --- */
-.checkbox-group {
+/* ===== منطقة رفع الملفات ===== */
+.file-upload-area {
+  border: 2px dashed var(--color-borders);
+  padding: 25px;
+  border-radius: calc(var(--radius) * 1.5);
+  background: var(--color-section-bg);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.file-upload-area:hover {
+  border-color: var(--color-primary-brand);
+  background: var(--color-section-bg-seconed);
+}
+
+.pdf-upload-zone {
+  border-color: var(--color-secondary-accent);
+  background: rgba(177, 137, 255, 0.05);
+}
+
+.pdf-upload-zone:hover {
+  border-color: var(--color-secondary-accent);
+  background: rgba(177, 137, 255, 0.1);
+}
+
+.file-name-display {
+  margin-top: 10px;
+  color: var(--color-secondary-accent);
+  font-weight: 600;
+}
+
+input[type="file"].form-control {
+  padding: 10px;
+}
+
+input[type="file"].form-control::file-selector-button {
+  background: var(--color-section-bg);
+  color: var(--color-body-text);
+  border: 1px solid var(--color-borders);
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  margin-right: 15px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+input[type="file"].form-control::file-selector-button:hover {
+  background: var(--color-primary-brand);
+  color: var(--color-text-btn);
+  border-color: var(--color-primary-brand);
+}
+
+/* ===== معاينة الصورة ===== */
+.logo-preview-container {
   display: flex;
-  align-items: center;
   gap: 20px;
-  padding: 15px;
-  background: var(--surface);
-  border-radius: 12px;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.logo-preview-container img {
+  width: 100px;
+  height: 100px;
+  border-radius: var(--radius);
+  object-fit: cover;
+  border: 2px solid var(--color-primary-brand);
+  box-shadow: var(--shadow-1);
+}
+
+/* ===== مجموعة الاختيارات ===== */
+.checkbox-group {
+  padding: 20px;
+  background: var(--color-section-bg);
+  border-radius: var(--radius);
   margin: 20px 0;
+  border: 1px solid var(--color-borders);
+}
+
+.checkbox-grid {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
 .checkbox-container {
@@ -119,233 +271,290 @@
   align-items: center;
   gap: 10px;
   cursor: pointer;
-  color: var(--text);
+  color: var(--color-body-text);
   font-weight: 500;
-
-  input {
-    width: 20px;
-    height: 20px;
-    accent-color: var(--purple-600);
-    cursor: pointer;
-  }
 }
 
-/* --- أزرار التحكم (Actions) --- */
-.modal-actions {
+.checkbox-container input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 2px solid var(--color-borders);
+  background: var(--color-card-bg);
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.checkbox-container input[type="checkbox"]:checked {
+  background-color: var(--color-primary-brand);
+  border-color: var(--color-primary-brand);
+}
+
+.checkbox-container input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  color: white;
+  font-size: 12px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ===== قسم المميزات ===== */
+.form-section {
+  background: var(--color-section-bg);
+  padding: 25px;
+  border-radius: calc(var(--radius) * 1.5);
+  border: 1px solid var(--color-borders);
+  margin-top: 25px;
+}
+
+.section-header {
   display: flex;
-  gap: 15px;
-  margin-top: 35px;
-
-  button {
-    flex: 1;
-    padding: 14px;
-    border-radius: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    border: none;
-    transition: all 0.3s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .btn-cancel { 
-    background: var(--surface-variant); 
-    color: var(--text); 
-    &:hover { background: #444; } 
-  }
-
-  .btn-confirm { 
-    background: var(--bg-btn); 
-    color: white; 
-    &:hover { filter: brightness(1.1); transform: translateY(-2px); }
-    &:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-  }
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
-/* --- الإضافات الديناميكية (Info Rows) --- */
-.info-row {
+.section-icon {
+  color: var(--color-primary-brand);
+  font-size: 1.2rem;
+}
+
+.section-header h3 {
+  color: var(--color-heading-text);
+  font-size: 1.1rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.features-list {
+  margin-bottom: 20px;
+}
+
+.feature-row {
   display: flex;
   gap: 10px;
   margin-bottom: 12px;
-
-  .btn-delete-all {
-    background: rgba(239, 68, 68, 0.1);
-    color: #ef4444;
-    border: 1px solid rgba(239, 68, 68, 0.2);
-    width: 45px;
-    height: 48px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.3s;
-    &:hover { background: #ef4444; color: white; }
-  }
+  animation: fadeIn 0.3s ease;
 }
 
-/* --- التحميل والأنيميشن --- */
+.btn-delete {
+  background: rgba(225, 29, 72, 0.1);
+  color: var(--warning);
+  border: 1px solid rgba(225, 29, 72, 0.2);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.btn-delete:hover {
+  background: var(--warning);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
+}
+
+.btn-add-feature {
+  width: 100%;
+  padding: 14px;
+  background: var(--color-section-bg);
+  border: 2px dashed var(--color-borders);
+  border-radius: var(--radius);
+  color: var(--color-body-text);
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.btn-add-feature:hover {
+  border-color: var(--color-primary-brand);
+  background: var(--color-section-bg-seconed);
+  color: var(--color-primary-brand);
+  transform: translateY(-2px);
+}
+
+/* ===== أزرار التحكم النهائية ===== */
+.form-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 35px;
+}
+
+.btn-cancel,
+.btn-submit {
+  flex: 1;
+  padding: 14px 24px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+.btn-cancel {
+  background: var(--color-section-bg);
+  color: var(--color-body-text);
+  border: 1px solid var(--color-borders);
+}
+
+.btn-cancel:hover {
+  background: var(--color-section-bg-seconed);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-1);
+}
+
+.btn-submit {
+  background: var(--color-primary-brand);
+  color: var(--color-text-btn);
+}
+
+.btn-submit:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-2);
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===== الأنيميشن والتحميل ===== */
 .animate-fade {
   animation: fadeIn 0.4s ease-out;
 }
 
 @keyframes modalSlideUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.spinner-border-sm {
-  width: 1rem;
-  height: 1rem;
-  border-width: 0.2em;
-}
-
-/* --- تكملة التنسيق الشامل --- */
-
-/* تحسين شكل حقول الاختيار (Select) */
-select.form-control {
-  appearance: none; // إزالة السهم الافتراضي للمتصفح
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23a1a1aa' class='bi bi-chevron-down' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 15px center;
-  padding-right: 40px;
-  cursor: pointer;
-
-  option {
-    background: var(--dialog);
-    color: var(--text);
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
-/* تنسيق منطقة رفع الملفات (PDF / Banner) */
-.form-group {
-  .logo-preview-container {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 10px;
-    border-radius: 14px;
-    border: 1px dashed var(--surface-variant);
-
-    img {
-      width: 80px;
-      height: 80px;
-      border-radius: 12px;
-      object-fit: cover;
-      border: 2px solid var(--purple-600);
-      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
-    }
-  }
-
-  // تخصيص شكل input[type="file"]
-  input[type="file"].form-control {
-    padding: 8px;
-    &::file-selector-button {
-      background: var(--surface-variant);
-      color: var(--text);
-      border: none;
-      padding: 6px 12px;
-      border-radius: 8px;
-      margin-right: 15px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: 0.3s;
-      &:hover {
-        background: var(--purple-600);
-      }
-    }
-  }
-}
-
-/* التنبيه الخاص بملفات الـ PDF */
-.pdf-upload-zone {
-  border: 2px dashed var(--purple-600) !important;
-  padding: 25px !important;
-  border-radius: 18px !important;
-  background: rgba(124, 58, 237, 0.05) !important;
-  text-align: center;
-  transition: 0.3s;
-
-  &:hover {
-    background: rgba(124, 58, 237, 0.08) !important;
-    border-color: #9d66ff !important;
-  }
-
-  .file-name-display {
-    margin-top: 12px;
-    font-size: 0.85rem;
-    color: var(--purple-600);
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-  }
-}
-
-/* تحسين شكل الـ Textarea */
-textarea.form-control {
-  min-height: 120px;
-  line-height: 1.6;
-  resize: none; // منع تغيير الحجم اليدوي للحفاظ على التصميم
-}
-
-/* تنسيق الـ Spinner للتحميل */
-.spinner-border-sm {
+.spinner {
+  width: 16px;
+  height: 16px;
   border: 2px solid rgba(255, 255, 255, 0.3);
-  border-top-color: #fff;
+  border-top-color: var(--color-text-btn);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
   display: inline-block;
+  margin-right: 8px;
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-/* تحسين شكل الـ Form Section (مميزات الكورس) */
-.form-section {
-  h3 {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--purple-600);
-    
-    i { font-size: 1.2rem; }
-  }
-
-  .btn-filter {
-    margin-top: 10px;
-    border-style: dashed; // جعل زر "إضافة ميزة" يبدو مختلفاً
-    &:hover {
-      border-style: solid;
-    }
+  to {
+    transform: rotate(360deg);
   }
 }
 
-/* تحسينات الهوامش والمسافات للشاشات الصغيرة */
+/* ===== التجاوب مع الشاشات الصغيرة ===== */
 @media (max-width: 768px) {
   .form-card {
     padding: 20px;
   }
   
-  .filter-buttons {
-    flex-wrap: wrap;
-    .btn-filter {
-      flex: 1 1 100%; // تأخذ العرض الكامل في الموبايل
-      justify-content: center;
-    }
-  }
-
-  .modal-actions {
+  .course-type-tabs {
     flex-direction: column;
-    button { width: 100%; }
-    .btn-cancel { order: 2; } // جعل زر الإلغاء في الأسفل
-    .btn-confirm { order: 1; }
+    align-items: stretch;
   }
+  
+  .tab-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .row-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .checkbox-grid {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .feature-row {
+    flex-direction: column;
+  }
+  
+  .btn-delete {
+    width: 100%;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .list-container {
+    padding: 15px;
+  }
+  
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+  
+  .toolbar .header {
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .logo-preview-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ===== تحسينات الوصول ===== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-primary-brand);
+  outline-offset: 2px;
 }

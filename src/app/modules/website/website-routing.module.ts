@@ -9,6 +9,7 @@ import { HelpCenterComponent } from './help-center/help-center.component';
 import { PriceComponent } from './price/price.component';
 import { PlatformUpdatesComponent } from './platform-updates/platform-updates.component';
 import { EducationToolsComponent } from './education-tools/education-tools.component';
+import { PrivacyTermComponent } from './privacy-term/privacy-term.component';
 
 const routes: Routes = [
   {path:'',component:WebComponent ,
@@ -21,6 +22,8 @@ const routes: Routes = [
         {path:'price' , component : PriceComponent},
         {path:'update' , component : PlatformUpdatesComponent},
         {path:'education-tools' , component : EducationToolsComponent},
+        {path:'privacy-terms' , component : PrivacyTermComponent},
+
 
         
       ]

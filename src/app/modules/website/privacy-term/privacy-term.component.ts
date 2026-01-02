@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { SubFooterComponent } from "../sub-footer/sub-footer.component";
 
 @Component({
-  selector: 'app-about-us',
+  selector: 'app-privacy-term',
   imports: [SubFooterComponent],
-  templateUrl: './about-us.component.html',
-  styleUrl: './about-us.component.scss'
+  templateUrl: './privacy-term.component.html',
+  styleUrl: './privacy-term.component.scss'
 })
-export class AboutUsComponent {
+export class PrivacyTermComponent {
 
 }

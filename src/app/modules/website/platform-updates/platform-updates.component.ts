@@ -1,6 +1,7 @@
 // platform-updates.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { SubFooterComponent } from "../sub-footer/sub-footer.component";
 
 interface PlatformUpdate {
   id: number;
@@ -19,7 +20,7 @@ interface PlatformUpdate {
   templateUrl: './platform-updates.component.html',
   styleUrls: ['./platform-updates.component.scss'],
   standalone: true,
-  imports:[NgIf,NgFor]
+  imports: [NgIf, NgFor, SubFooterComponent]
 })
 export class PlatformUpdatesComponent implements OnInit {
   // Active filter

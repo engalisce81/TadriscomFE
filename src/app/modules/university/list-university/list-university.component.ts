@@ -5,8 +5,8 @@ import { UniversityDto, UniversityService, CreateUpdateUniversityDto } from '@pr
 
 @Component({
   selector: 'app-list-university',
-  standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, RouterLink],
+    standalone: true,
+    imports:[ReactiveFormsModule,FormsModule ,RouterLink],
   templateUrl: './list-university.component.html',
   styleUrl: './list-university.component.scss' // تأكد أن الـ SCSS هو اللي فيه الاستايل المودرن
 })

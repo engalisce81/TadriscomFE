@@ -8,10 +8,11 @@ import { PartnersComponent } from "../partners/partners.component";
 import { ExperienceComponent } from "../experience/experience.component";
 import { CtaComponent } from "../cta/cta.component";
 import { FooterComponent } from '../footer/footer.component';
+import { PriceComponent } from "../price/price.component";
 
 @Component({
   selector: 'app-website-home',
-  imports: [HeroComponent, WhyChooseUsComponent, CoursesComponent, TestimonialsComponent, QaComponent, PartnersComponent, ExperienceComponent, CtaComponent,FooterComponent ],
+  imports: [HeroComponent, WhyChooseUsComponent, CoursesComponent, TestimonialsComponent, QaComponent, PartnersComponent, ExperienceComponent, CtaComponent, FooterComponent, PriceComponent],
   templateUrl: './website-home.component.html',
   styleUrl: './website-home.component.scss'
 })

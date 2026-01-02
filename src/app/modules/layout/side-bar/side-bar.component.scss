@@ -1,0 +1,183 @@
+/* الحاوية الرئيسية */
+.custom-sidebar {
+  width: 260px;
+  height: 100vh;
+  background-color: var(--color-section-bg);
+  border-right: 1px solid var(--color-borders);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 1100;
+  box-shadow: var(--shadow);
+}
+
+/* اللوجو */
+.sidebar-header {
+  padding: 30px 20px;
+  .main-logo {
+    width: 100%;
+    height: 60px;
+    background-image: var(--lpx-logo);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+/* القائمة */
+.sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 15px;
+
+  .nav-list { list-style: none; padding: 0; margin: 0; }
+
+  .nav-divider {
+    color: var(--color-primary-brand);
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 25px 0 10px 12px;
+    letter-spacing: 1.5px;
+  }
+}
+
+/* الروابط */
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  color: var(--color-body-text);
+  text-decoration: none;
+  border-radius: var(--radius);
+  margin-bottom: 5px;
+  transition: 0.3s;
+
+  i {
+    width: 25px;
+    font-size: 1.1rem;
+    margin-right: 12px;
+    color: var(--color-primary-cta);
+  }
+
+  &:hover {
+    background-color: var(--color-section-bg-seconed);
+    color: var(--color-primary-brand);
+  }
+
+  &.active {
+    background-color: var(--color-primary-brand);
+    color: var(--color-text-btn) !important;
+    box-shadow: var(--shadow-1);
+    i { color: var(--color-text-btn) !important; }
+  }
+}
+
+/* الفوتر */
+.sidebar-footer {
+  padding: 15px;
+  border-top: 1px solid var(--color-borders);
+  .profile-card {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    text-decoration: none;
+    .avatar {
+      font-size: 30px;
+      margin-right: 10px;
+      color: var(--color-primary-brand);
+    }
+    .user-name {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-heading-text);
+    }
+    .user-role { font-size: 11px; color: var(--color-text-p); }
+  }
+}
+
+/* --- الموبايل (Responsive) --- */
+
+.mobile-toggle {
+  display: none; 
+  position: fixed;
+  top: 15px;
+  left: 15px; /* غيرتها لليسار لسهولة الوصول بجانب السايد بار */
+  z-index: 1200;
+  background: var(--color-primary-brand);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  z-index: 1050;
+  &.active { display: block; }
+}
+
+@media (max-width: 992px) {
+  .mobile-toggle { display: block; }
+  
+  .custom-sidebar {
+    transform: translateX(0);
+    &.closed { transform: translateX(-100%); }
+  }
+}
+
+@media (min-width: 993px) {
+  /* لضمان ثبات السايد بار في الكمبيوتر */
+  .custom-sidebar { transform: translateX(0) !important; }
+  
+  /* إضافة هامش للمحتوى الرئيسي لكي لا يختفي خلف السايد بار */
+  :host-context(body) .lpx-content-container {
+    padding-left: 260px;
+  }
+}
+
+/* الحاوية الأساسية للمحتوى */
+.layout {
+  min-height: 100vh;
+  background-color: var(--color-page-bg); /* استخدام متغير الخلفية من الروت */
+  transition: padding-left 0.4s ease; /* حركة ناعمة عند تغير الشاشة */
+  padding: 20px;
+}
+
+/* --- الشاشات الكبيرة (Desktop) --- */
+@media (min-width: 993px) {
+  .layout {
+    margin-left: 260px; /* دفع المحتوى لليمين بمقدار عرض السايد بار */
+    width: calc(100% - 260px); /* عرض المحتوى هو الشاشة ناقص السايد بار */
+  }
+
+  .mobile-toggle {
+    display: none !important; /* إخفاء زر الموبايل في الكمبيوتر */
+  }
+}
+
+/* --- الشاشات الصغيرة (Mobile/Tablet) --- */
+@media (max-width: 992px) {
+  .layout {
+    margin-left: 0; /* المحتوى يأخذ العرض كاملاً */
+    width: 100%;
+    padding-top: 70px; /* ترك مسافة لزر الموبايل (Hamburger) في الأعلى */
+  }
+
+  .custom-sidebar {
+    transform: translateX(0);
+    &.closed {
+      transform: translateX(-100%);
+    }
+  }
+}

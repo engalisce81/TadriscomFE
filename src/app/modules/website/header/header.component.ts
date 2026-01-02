@@ -1,13 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, OnInit, HostListener } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import {
-  AuthService,
-  ConfigStateService,
-  LocalizationModule,
-  SessionStateService,
-} from '@abp/ng.core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ConfigStateService, LocalizationModule } from '@abp/ng.core';
+import { FormsModule } from '@angular/forms';
 import { LoginService } from 'src/app/service/loginService';
 
 @Component({
@@ -15,58 +10,60 @@ import { LoginService } from 'src/app/service/loginService';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   standalone: true,
-  imports: [RouterLink, CommonModule, FormsModule, LocalizationModule]
+  imports: [RouterLink, RouterLinkActive, CommonModule, FormsModule, LocalizationModule]
 })
 export class HeaderComponent implements OnInit {
   isMenuActive = false;
   isDarkTheme = false;
+  showScrollBtn = false;
 
   isTeacher = false;
   isAdmin = false;
-  isAuthorized = false; // Note: fixed spelling from 'isAuthorize'
+  isAuthorized = false;
 
   constructor(
-    private authService: AuthService,
     private loginService: LoginService,
     private configState: ConfigStateService
   ) { }
 
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.showScrollBtn = window.scrollY > 400;
+  }
+
   ngOnInit(): void {
-    // 1. Handle Theme
-    const currentTheme = localStorage.getItem('theme');
-    if (currentTheme === 'dark') {
-      this.isDarkTheme = true;
-      document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-      this.isDarkTheme = false;
-      document.documentElement.setAttribute('data-theme', 'light');
-    }
+    const savedTheme = localStorage.getItem('theme');
+    this.isDarkTheme = savedTheme === 'dark';
+    this.applyTheme();
 
-    // 2. Handle User Roles and Authorization
     const currentUser = this.configState.getOne("currentUser");
-
-    this.isAuthorized = currentUser.isAuthenticated;
+    this.isAuthorized = !!currentUser?.isAuthenticated;
 
     if (this.isAuthorized && currentUser.roles) {
       this.isAdmin = currentUser.roles.includes('admin');
       this.isTeacher = currentUser.roles.includes('Teacher');
-      console.log(this.isTeacher);
     }
   }
 
-  // ... your toggle methods
   toggleTheme() {
-    this.isDarkTheme = !this.isDarkTheme; // Added missing toggle logic
-    const theme = this.isDarkTheme ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
+    this.isDarkTheme = !this.isDarkTheme;
+    localStorage.setItem('theme', this.isDarkTheme ? 'dark' : 'light');
+    this.applyTheme();
+  }
+
+  private applyTheme() {
+    document.documentElement.setAttribute('data-theme', this.isDarkTheme ? 'dark' : 'light');
   }
 
   toggleMenu() {
     this.isMenuActive = !this.isMenuActive;
   }
 
-  logout(){
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  logout() {
     this.loginService.logout();
   }
 }

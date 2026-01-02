@@ -1,0 +1,45 @@
+<button class="mobile-toggle" (click)="toggleSidebar()" aria-label="Toggle Menu">
+  <i [class]="isClosed ? 'fas fa-bars' : 'fas fa-times'"></i>
+</button>
+
+<div class="sidebar-overlay" [class.active]="!isClosed" (click)="closeSidebar()"></div>
+
+<aside class="custom-sidebar" [class.closed]="isClosed">
+  <div class="sidebar-header">
+    <div class="main-logo"></div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <ul class="nav-list">
+      <ng-container *ngFor="let item of visibleMenuItems$ | async">
+        <div class="nav-divider" *ngIf="item.group">{{ item.group }}</div>
+
+        <li class="nav-item">
+          <a [routerLink]="item.path" 
+             routerLinkActive="active" 
+             class="nav-link" 
+             (click)="closeSidebar()">
+            <i [class]="item.icon"></i>
+            <span>{{ item.name }}</span>
+          </a>
+        </li>
+      </ng-container>
+    </ul>
+  </nav>
+
+  <div class="sidebar-footer">
+    <a routerLink="profile" class="profile-card" (click)="closeSidebar()">
+      <div class="avatar">
+        <i class="fas fa-user-circle"></i>
+      </div>
+      <div class="user-info">
+        <span class="user-name">User Name</span>
+        <span class="user-role">Administrator</span>
+      </div>
+    </a>
+  </div>
+</aside>
+
+<div class="layout">
+  <router-outlet></router-outlet>
+</div>

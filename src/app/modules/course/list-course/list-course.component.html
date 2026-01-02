@@ -30,7 +30,7 @@
       </button>
     </div>
 
-    <button routerLink="/courses/create" class="btn-create-modern">
+    <button routerLink="create" class="btn-create-modern">
       <i class="bi bi-plus-lg"></i> <span>Create New Course</span>
     </button>
   </div>
@@ -43,12 +43,6 @@
     </div>
   </div>
 
-  @if (loading) {
-  <div class="global-loader">
-    <div class="spinner"></div>
-    <p>Loading Courses...</p>
-  </div>
-  }
 
   @if (!loading) {
   <div class="cards-grid">
@@ -73,7 +67,7 @@
               <i class="bi bi-chat-dots"></i> Chat
             </button>
 
-            <button [routerLink]="['/courses', course.id, 'exams']" class="btn-action">
+            <button [routerLink]="[ course.id, 'exams']" class="btn-action">
               <i class="bi bi-journal-check"></i> Exams
             </button>
 
@@ -85,7 +79,7 @@
               <i class="bi bi-person-plus"></i> Join Requests
             </button>
 
-            <button [routerLink]="['/courses/update', course.id]" class="btn-action">
+            <button [routerLink]="['update', course.id]" class="btn-action">
               <i class="bi bi-pencil-square"></i> Edit
             </button>
 

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { SubFooterComponent } from "../sub-footer/sub-footer.component";
 
 @Component({
   selector: 'app-community',
-  imports: [],
+  imports: [SubFooterComponent],
   templateUrl: './community.component.html',
   styleUrl: './community.component.scss'
 })

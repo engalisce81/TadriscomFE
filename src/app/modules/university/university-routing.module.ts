@@ -6,7 +6,7 @@ import { ListGradelevelComponent } from './college/gradeLevel/list-gradelevel/li
 import { ListSubjectComponent } from './college/gradeLevel/subject/list-subject/list-subject.component';
 
 const routes: Routes = [
-  {path:'',pathMatch:"full",component:ListUniversityComponent},
+  {path:'',component:ListUniversityComponent},
   {path:':id/colleges',pathMatch:"full",component:ListCollegeComponent},
   {path:':id/colleges/:collegeId/gradeLevels',pathMatch:"full",component:ListGradelevelComponent},
   {path:':id/colleges/:collegeId/gradeLevels/:gradeLevelId/subjects',pathMatch:"full",component:ListSubjectComponent}
