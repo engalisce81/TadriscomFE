@@ -1,6 +1,6 @@
 import { Environment } from '@abp/ng.core';
 
-const baseUrl = 'https://progres-fe-production.up.railway.app';
+const baseUrl = 'https://tadriscomfe-production.up.railway.app';
 
 export const environment = {
   production: true,
@@ -10,7 +10,7 @@ export const environment = {
     logoUrl: '/assets/images/imgs/Tadriscom.jpeg',
   },
   oAuthConfig: {
-    issuer: 'https://dev-acadmy-httpapi-production-8469.up.railway.app/',
+    issuer: 'https://tadriscombe-production.up.railway.app/',
     redirectUri: baseUrl,
     clientId: 'Acadmy_App',
     responseType: 'code',
@@ -19,7 +19,7 @@ export const environment = {
   },
   apis: {
     default: {
-      url: 'https://dev-acadmy-httpapi-production-8469.up.railway.app',
+      url: 'https://tadriscombe-production.up.railway.app',
       rootNamespace: 'Tadriscom',
     },
   },
