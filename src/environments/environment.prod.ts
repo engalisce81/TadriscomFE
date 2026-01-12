@@ -6,8 +6,8 @@ export const environment = {
   production: true,
   application: {
     baseUrl,
-    name: 'Tadriscom',
-    logoUrl: '/assets/images/imgs/Tadriscom.jpeg',
+    name: 'Company-Name',
+    logoUrl: '/assets/images/imgs/CompanyName.jpeg',
   },
   oAuthConfig: {
     issuer: 'https://tadriscombe-production.up.railway.app/',
