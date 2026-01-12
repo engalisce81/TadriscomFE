@@ -7,7 +7,7 @@ export const environment = {
   application: {
     baseUrl,
     name: 'Tadriscom',
-    logoUrl: '/assets/images/imgs/Tadriscom.jpeg',
+    logoUrl: 'assets/images/imgs/CompanyName.jpeg',
   },
   oAuthConfig: {
     issuer: 'https://localhost:44318/',
